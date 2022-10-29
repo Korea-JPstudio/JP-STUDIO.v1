@@ -15,7 +15,7 @@ let pdtPrice = document.querySelectorAll(".pdt-price-td");
 
 for(let i = 0 ; i< pdtPrice.length; i++){
     pdtPrice[i].innerHTML += `
-    ₩${price}
+        ₩${price}
     `
 }
 
@@ -23,27 +23,25 @@ size.onchange = () => {
     let pdt_size = size.options[size.selectedIndex].value;
     console.log(pdt_size);
 
+    // let check = [];
 
     if(pdt_size == 'XL'){
         XL.style.display = 'table-row';
     }
     else if(pdt_size == 'L'){
         L.style.display = 'table-row';
-        
     }
     else if(pdt_size == 'M'){
         M.style.display = 'table-row';
-        
     }
     else if(pdt_size == 'S'){
         S.style.display = 'table-row';
-        
     }
     else if(pdt_size == 'XS'){
         XS.style.display = 'table-row';
-        
     }
 }
+    
 
 plus_btns[0].onclick = () => {
     counts[0].value++;
