@@ -28,12 +28,12 @@ public class AccountApi {
 
     private final AccountService accountService;
     @LogAspect
-    @PostMapping("/SignUp")
+    @PostMapping("/signUp")
     public ResponseEntity<?> SignUp(@Validated(ValidationSequence.class) @RequestBody SignUpDto signUpDto, BindingResult bindingResult) throws Exception {
 
         accountService.duplicateEmail(signUpDto);
         accountService.register(signUpDto);
 
-        return ResponseEntity.created(URI.create("/account/Login")).body(new CMRespDto<>("회원가입 성공", signUpDto.getId()));
+        return ResponseEntity.created(URI.create("/account/login")).body(new CMRespDto<>("회원가입 성공", signUpDto.getUsername()));
     }
 }

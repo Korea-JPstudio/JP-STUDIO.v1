@@ -19,7 +19,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void duplicateEmail(SignUpDto signUpDto) throws Exception {
 
-        User user = accountRepository.findUserByEmail(signUpDto.getId());
+        User user = accountRepository.findUserByEmail(signUpDto.getUsername());
 
         if (user != null) {
 
