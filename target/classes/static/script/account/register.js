@@ -5,7 +5,7 @@ registerButton.onclick = () => {
 
 
 let user = {
-    id : accountInput[0].value,
+    username : accountInput[0].value,
     password : accountInput[1].value,
     reconfirm : accountInput[2].value,
     name : accountInput[3].value,
@@ -16,7 +16,7 @@ let user = {
 let ajaxOption = {
     async : false,
     type : "post",
-    url : "/api/account/SignUp",
+    url : "/api/account/signUp",
     contentType : "application/json",
     data: JSON.stringify(user),
     dataType : "json",
