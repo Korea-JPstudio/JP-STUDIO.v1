@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/CSS/Details.css">
+    <link rel="stylesheet" href="/static/CSS/detail-body.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="image">
+                <img src="/static/details-images/CORDUROY WES SHIRT [NAVY].jpg" alt="이미지1">
+            </div>
+            <div class="infoArea">
+                <div class="price">
+                    <form action="">
+                        <div class="pName" colspan="3">CORDUROY WES SHIRT [NAVY]</div>
+                        <div class="line"></div>
+                    <table class="detail-table">
+                        <tr>
+                            <th class="pdt-price">Price</th>
+                            <td class="pdt-price" colspan="2">₩<span class="price-value">74000</span></td>
+                        </tr>
+                        <tr>
+                            <th class="pdt-size">SIZE</th>
+                            <td class="pdt-size" colspan="2">
+                                <select class="size-select" name="size">
+                                    <option value="">[필수] 옵션을 선택해주세요.</option>
+                                    <option value="XL">XL</option>
+                                    <option value="L">L</option>
+                                    <option value="M">M</option>
+                                    <option value="S">S</option>
+                                    <option value="XS">XS</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="guideArea">
+                        <p class="info1">
+                            (최소주문수량 1개 이상)
+                        </p>
+                        <p class="info2">
+                            <img class="icon-img" src="/static/images/icon.png" alt="">
+                            위 옵션선택 박스를 선택하시면 아래에 상품이 추가됩니다.
+                        </p>
+                    </div>
+                    <table class="selected-table">
+                        <tbody class="pdt-tbody">
+                            <tr class="XL">
+                                <td>
+                                    <p>상품이름<br>- <span>XL</span></p>
+                                </td>
+                                <td>
+                                    <input class="input1" type="text" size="1" value="1">
+                                    <button type="button" class="plus">+</button>
+                                    <button type="button" class="minus">-</button>   
+                                </td>
+                                <td class="pdt-price-td"></td>
+                            </tr>
+                            
+                            <tr class="L">
+                                <td>
+                                    <p>상품이름<br>- <span>L</span></p>
+                                </td>
+                                <td>
+                                    <input type="text" size="1" value="1">
+                                    <button type="button" class="plus">+</button>
+                                    <button type="button" class="minus">-</button>   
+                                </td>
+                                <td class="pdt-price-td"></td>
+                            </tr>
+
+                            <tr class="M">
+                                <td>
+                                    <p>상품이름<br>- <span>M</span></p>
+                                </td>
+                                <td>
+                                    <input type="text" size="1" value="1">
+                                    <button type="button" class="plus">+</button>
+                                    <button type="button" class="minus">-</button>   
+                                </td>
+                                <td class="pdt-price-td"></td>
+                            </tr>
+
+                            <tr class="S">
+                                <td>
+                                    <p>상품이름<br>- <span>S</span></p>
+                                </td>
+                                <td>
+                                    <input type="text" size="1" value="1">
+                                    <button type="button" class="plus">+</button>
+                                    <button type="button" class="minus">-</button>   
+                                </td>
+                                <td class="pdt-price-td"></td>
+                            </tr>
+
+                            <tr class="XS">
+                                <td>
+                                    <p>상품이름<br>- <span>XS</span></p>
+                                </td>
+                                <td>
+                                    <input type="text" size="1" value="1">
+                                    <button type="button" class="plus">+</button>
+                                    <button type="button" class="minus">-</button>   
+                                </td>
+                                <td class="pdt-price-td"></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <table>
+                        <tfoot>
+                            <tr>
+                                <td><strong> 총 상품금액</strong>(수량): <strong>가격</strong>(수량 개)</td>
+                            </tr>
+                            
+                        </tfoot>
+                    </table>
+                    <div class="btn-group">
+                        <button class="btn-buy" type="button">BUY NOW</button>
+                        <button class="btn-add-cart" type="button">ADD TO CART</button>
+
+                        <!-- <img src="/static/images/buy-now.png" alt="구매 버튼"> -->
+                        <!-- <img src="/static/images/btn-add-cart.png" alt="장바구니 버튼"> -->
+                    </div>
+                    
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+        <div id="detail-img">
+            
+                <div><img src ="/static/details-images/상세사진 1.jpg"></div>
+                <div><img src ="/static/details-images/navy3.png"></div>
+                <div><img src ="/static/details-images/navy4.png"></div>
+                <div><img src ="/static/details-images/INFO1.jpg"></div>
+            
+            <div id="b-box">
+              
+                <div id ="review">
+                    <div id="l">REVIEW</div>
+                    <div id="r">
+                        <button id="but-w" type ="button"> WRITE </button> 
+                        <button id="but-l" type ="button"> LIST </button>  
+                    </div>
+                </div>
+                
+                <div id ="qna">
+                    <div id="l">Q&A</div>
+                    <div id="r">
+                        <button id="but-w" type ="button"> WRITE </button>
+                        <button id="but-l" type ="button"> LIST </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="/static/script/details.js"></script> -->
+    <script src="/static/script/product/product_details.js"></script>
+</body>
