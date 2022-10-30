@@ -36,4 +36,5 @@ public class AccountApi {
 
         return ResponseEntity.created(URI.create("/account/login")).body(new CMRespDto<>("회원가입 성공", signUpDto.getUsername()));
     }
+
 }

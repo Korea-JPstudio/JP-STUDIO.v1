@@ -23,7 +23,7 @@ public class ValidationAop {
 
     //Pointcut -> 이 시점에 사용하겠다.
     //추가적으로 demo 패키지 아래 Api 객체의 모든 메서드에 이 pointcut을 적용시키겠다.
-    @Pointcut("execution(* com.example.demo..*Api.*(..))")
+    @Pointcut("@annotation(com.example.demo.aop.annotation.ValidAspect)")
     private void executionPointCut() {}
 
 
@@ -43,7 +43,7 @@ public class ValidationAop {
                 break;
             }
         }
-        //에러가 있으면 if 실행
+       // 에러가 있으면 if 실행
         if(bindingResult.hasErrors()){
 
             //에러맵을 만들어냄
