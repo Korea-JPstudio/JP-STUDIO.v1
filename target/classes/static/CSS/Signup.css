@@ -60,3 +60,16 @@
     flex:1;
 }
 
+
+#postcode-search{
+    padding : 1px 6px;
+    background-color: rgb(198, 198, 198);
+    font-weight: bold;
+}
+
+.account-button{
+    margin-top: 5px;
+    background-color: rgb(198, 198, 198);
+    font-weight: bold;
+
+}
