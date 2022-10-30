@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/static/CSS/Login.css">
 <link rel="stylesheet" href="/static/images">
 </head>
+
 <body>
 	<div id="container">
         <div class="aaaa">
@@ -46,19 +47,25 @@
         <div class="login">
             <div class="account-container">
             <section class="account-current">
-                <form action="/account/Login" method="post">
+                <form action="/account/login" method="post">
                   <h2 class="account-subtitle">로그인</h2>
-                  <input type="email" class="account-input" name="username" th:value="${email}" placeholder="이메일" required>
-                  <input type="password" class="account-input" name="password" placeholder="비밀번호" required>
+                    <div th:if="${error == 'auth'}">
+
+                    </div>
+                    <div th:if="${error == 'passwordExpired'}">
+
+                    </div>
+                    <input type="text" class="account-input" name="username" th:value="${username}" placeholder="이메일" required>
+                    <input type="password" class="account-input" name="password" placeholder="비밀번호" required>
                   <a class="find-password-link"href="">비밀번호를 잊으셨나요?</a>
                   <button type="submit" class="btn account-button">로그인</button>
                   <div class="hr-sect">OR</div>
-                  <button type="button" onclick="location.href='SignUp'" class="btn account-button">회원가입</button>
+                  <button type="button" onclick="location.href='/account/signUp'" class="btn account-button">회원가입</button>
                 </form>
             </section>
         </div>
         </div>
     </div>
-    <script src="/script/Mainmenu.js"></script>
+    <script src="/static/script/aside_menu.js"></script>
 </body>
 </html>
