@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.repository.ProductManagementRepository">
+    <select id ="getProductMstList" resultType="com.example.demo.domain.OptionProductMst">
+        select
+            pm.id as pdt_id,
+            pcm.category_name as category,
+            pm.pdt_name
+        from
+            pdt_mst pm
+            left outer join pdt_category_mst pcm on(pcm.id = pm.category_id)
+    </select>
+
+</mapper>

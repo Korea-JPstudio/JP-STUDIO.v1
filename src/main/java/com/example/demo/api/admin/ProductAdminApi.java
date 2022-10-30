@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -21,5 +24,10 @@ public class ProductAdminApi {
 
         return ResponseEntity.ok()
                 .body(new CMRespDto<>("get successfully", productManagementService.getCategoryList()));
+    }
+}
+    @GetMapping("/option/products/mst")
+    public ResponseEntity<?> getProductList() throws Exception {
+        return ResponseEntity.ok().body(new CMRespDto<>("get successful", productManagementService.getProductMstList()));
     }
 }

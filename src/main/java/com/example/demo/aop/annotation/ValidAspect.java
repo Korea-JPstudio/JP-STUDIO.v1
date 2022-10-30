@@ -11,4 +11,8 @@ import java.lang.annotation.Target;
 public @interface ValidAspect {
 
 
+//실행중에 쓸거다 , TYPE은 클래스 , 클래스위에 달아도된다  METHOD위에 달아도된다.
+@Target({ElementType.TYPE, ElementType.METHOD})
+public @interface ValidAspect {
+
 }
