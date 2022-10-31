@@ -2,6 +2,7 @@ package com.example.demo.service.admin;
 
 import com.example.demo.dto.admin.CategoryResponseDto;
 import com.example.demo.dto.admin.ProductRegisterReqDto;
+import com.example.demo.dto.admin.ProductSizeOptionRespDto;
 import com.example.demo.exception.CustomInternalServerErrorException;
 import com.example.demo.repository.admin.ProductManagementRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,4 +45,17 @@ public class ProductManagementServiceImpl implements ProductManagementService {
             throw new CustomInternalServerErrorException("상품 등록 실패"); //이 에러를 띄워라.
         }
     }
+
+    @Override
+
+    public List<?> getSizeList(int productId) throws Exception {
+        List<ProductSizeOptionRespDto> list = new ArrayList<ProductSizeOptionRespDto>();
+
+        productManagementRepository.getSizeList(productId).forEach(size ->{
+            list.add(size.toDto());
+        });
+        return list;
+    }
+
+
 }
