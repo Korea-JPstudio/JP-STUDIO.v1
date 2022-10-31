@@ -50,7 +50,6 @@ public class ProductAdminApi {
             productRegisterReqDto.setName(name);
             int price = productRegisterReqDto.getPrice();
             productRegisterReqDto.setPrice(price);
-
             productManagementService.registerMst(productRegisterReqDto);
 
 
