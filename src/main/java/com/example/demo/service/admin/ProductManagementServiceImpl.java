@@ -1,6 +1,8 @@
 package com.example.demo.service.admin;
 
 import com.example.demo.dto.admin.CategoryResponseDto;
+import com.example.demo.dto.admin.ProductRegisterReqDto;
+import com.example.demo.exception.CustomInternalServerErrorException;
 import com.example.demo.repository.admin.ProductManagementRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,5 +36,12 @@ public class ProductManagementServiceImpl implements ProductManagementService {
             list.add(pdtMst.toDto());
         });
         return list;
+    }
+
+    @Override
+    public void registerMst(ProductRegisterReqDto productRegisterReqDto) throws Exception {
+        if(productManagementRepository.saveProductMst(productRegisterReqDto.toEntity()) == 0){ //insert 안 되면
+            throw new CustomInternalServerErrorException("상품 등록 실패"); //이 에러를 띄워라.
+        }
     }
 }

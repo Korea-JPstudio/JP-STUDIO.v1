@@ -16,10 +16,6 @@ public class Product {
     private String pdt_name;
     private int category_id;
     private int pdt_price;
-    private String pdt_simple_info;
-    private String pdt_detail_info;
-    private String pdt_option_info;
-    private String pdt_management_info;
-    private String pdt_shipping_info;
+
 
 }
