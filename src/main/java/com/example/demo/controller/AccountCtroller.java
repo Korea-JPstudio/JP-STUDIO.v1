@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class AccountCtroller {
 
-    @GetMapping("/account/Login")
-    public String login(Model model, @RequestParam @Nullable String email){
+    @GetMapping("/account/login")
+    public String login(Model model, @RequestParam @Nullable String email, @RequestParam @Nullable String error){
         model.addAttribute("email", email == null ? "" : email);
-        return "Login";
+        model.addAttribute("error", error == null ? "" : error);
+        return "/account/login";
     }
 
-    @GetMapping("/account/SignUp")
+    @GetMapping("/account/signUp")
     public String signUp(){
-        return "SignUp";
+        return "/account/signUp";
     }
 }

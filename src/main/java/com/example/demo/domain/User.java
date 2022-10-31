@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @Data
 public class User {
 
-    private String id;
-    private String email;
+    private int id;
+    private String username;
     private String password;
     private String name;
     private String provider;
