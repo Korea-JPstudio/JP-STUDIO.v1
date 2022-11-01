@@ -14,4 +14,7 @@ public interface ProductManagementRepository {
     public int saveProductMst(Product product) throws Exception;
 
     public List<OptionProductSize> getSizeList(int productId) throws Exception;
+
+    public int saveProductDtl(ProductDetail productDetail) throws Exception;
+
 }

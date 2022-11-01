@@ -27,5 +27,17 @@
        where
             pm.id = #{productId}
     </select>
+    <insert id="saveProductDtl" parameterType="com.example.demo.domain.ProductDetail">
+        insert into
+            pdt_dtl
+        values(
+                0,
+                #{pdt_id},
+                #{size_id},
+                #{pdt_stock},
+                now(),
+                now()
+            )
+    </insert>
 
 </mapper>

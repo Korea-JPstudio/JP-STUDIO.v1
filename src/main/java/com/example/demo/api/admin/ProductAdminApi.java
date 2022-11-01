@@ -4,6 +4,7 @@ package com.example.demo.api.admin;
 import com.example.demo.aop.annotation.LogAspect;
 import com.example.demo.aop.annotation.ValidAspect;
 import com.example.demo.dto.CMRespDto;
+import com.example.demo.dto.admin.ProductRegisterDtlReqDto;
 import com.example.demo.dto.admin.ProductRegisterReqDto;
 import com.example.demo.service.admin.ProductManagementService;
 import lombok.RequiredArgsConstructor;
@@ -73,6 +74,15 @@ public class ProductAdminApi {
     public ResponseEntity<?> getSizeList(@PathVariable int productId) throws Exception {
         return ResponseEntity.ok()
                 .body(new CMRespDto<>("get Successfully", productManagementService.getSizeList(productId)));
+    }
+
+    @PostMapping("/product/dtl")
+    public ResponseEntity<?> registerDtl(@RequestBody ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception{
+
+        productManagementService.registerDtl(productRegisterDtlReqDto);
+
+        return ResponseEntity.ok().body(new CMRespDto<>("Register Successfully", true));
+
     }
 
 }
