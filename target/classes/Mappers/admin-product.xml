@@ -10,6 +10,18 @@
         <result property="group_id" column="group_id"/>
         <result property="category_name" column="category_name"/>
     </resultMap>
+    <insert id="saveProductMst" parameterType="com.example.demo.domain.Product">
+        insert into
+            pdt_mst
+        values(
+            0,
+            #{pdt_name},
+            #{category_id},
+            #{pdt_price},
+            now(),
+            now()
+        )
+    </insert>
 
     <select id="getCategoryList" resultMap="product_category"><!--  join하면 무조건 resultMap-->
         select

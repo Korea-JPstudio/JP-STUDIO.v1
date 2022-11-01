@@ -149,3 +149,18 @@ minus_btns[4].onclick = () => {
         ₩${price * counts[4].value}
     `;
 }
+
+const totalPrice = document.querySelector(".totalPrice").innerHTML;
+Number(totalPrice);
+
+let sum = 0;
+Number(sum);
+
+for(let i = 0; i<pdtPrice.length; i++){
+    sum += Number(pdtPrice[i].innerHTML);
+}
+
+totalPrice.innerHTML = ``;
+totalPrice.innerHTML += `
+    ${sum}
+`;

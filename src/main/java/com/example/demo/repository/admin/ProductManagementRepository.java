@@ -10,4 +10,7 @@ public interface ProductManagementRepository {
     public List<ProductCategory> getCategoryList() throws Exception;
 
     public List<OptionProductMst> getProductMstList() throws Exception;
+
+    public int saveProductMst(Product product) throws Exception;
+
 }
