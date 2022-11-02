@@ -58,14 +58,14 @@ ul,li {
 	display: flex;
 	justify-content: space-between;
   
-	position: fixed;
+	/* position: fixed; */
 	top: 0;
-	z-index: 11;
+	/* z-index: 11; */
   
 	width: 100%;
 }
-.big_menu {
+/* .big_menu {
 	position: fixed;
 	top: 38;
 	z-index: 11;
-}
+} */
