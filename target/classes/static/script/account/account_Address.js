@@ -30,10 +30,40 @@ function checkPost(){
                     }
                 }
                      // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("postcode").value = data.zonecode;
-                document.getElementById("address").value = addr;
+                document.querySelector(".postcode").value = data.zonecode;
+                document.querySelector(".address").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("detailAddress").focus();
+                document.querySelector(".detailAddress").focus();
+            }
+        }).open();
+    }
+
+function checkPost1(){
+    console.log("우편번호")
+            new daum.Postcode({
+            oncomplete: function(data){
+                var addr = '';
+                var extraAddr = '';
+
+                if (data.userSelectedType === 'R') {
+                    addr = data.roadAddress;
+                } else {
+                    addr = data.jibunAddress;
+                }
+
+                if(data.userSelectedType === 'R'){
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                }
+
+                document.querySelector(".postcode1").value = data.zonecode;
+                document.querySelector(".address1").value = addr;
+                document.querySelector(".detailAddress1").focus();
             }
         }).open();
     }
