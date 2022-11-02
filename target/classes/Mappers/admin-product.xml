@@ -32,4 +32,19 @@
         pdt_category_mst
     </select>
 
+    <insert id="saveProductDtl" parameterType="com.example.demo.domain.ProductDetail" >
+        insert into
+            pdt_dtl
+        values(
+            0,
+            #{pdt_id},
+            #{size_id},
+            #{size_name},
+            #{pdt_color},
+            #{pdt_stock},
+            now(),
+            now()
+        )
+    </insert>
+
 </mapper>
