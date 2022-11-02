@@ -16,6 +16,7 @@ public class Product {
     private String pdt_name;
     private int category_id;
     private int pdt_price;
+<<<<<<< HEAD
     private String pdt_simple_info;
     private String pdt_detail_info;
     private String pdt_option_info;
@@ -23,5 +24,11 @@ public class Product {
     private String pdt_shipping_info;
     private List<ProductDetail> pdt_dtls;
    //private List<ProductImg> pdt_imgs;
+=======
+
+    private List<ProductDetail> pdt_dtls;
+    private List<ProductImg> pdt_imgs;
+
+>>>>>>> origin/main
 
 }

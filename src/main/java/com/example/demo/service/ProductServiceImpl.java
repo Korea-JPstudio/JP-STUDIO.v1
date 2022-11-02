@@ -39,6 +39,7 @@ public class ProductServiceImpl implements ProductService {
 
         if(product == null) {
             Map<String, String> errormap = new HashMap<String, String>();
+<<<<<<< HEAD
             errormap.put("error", "등록되지 않은 상품입니다.");
             throw new CustomValidationException("Get Product Error", errormap);
         }
@@ -54,11 +55,29 @@ public class ProductServiceImpl implements ProductService {
 
         product.getPdt_dtls().forEach(dtl -> {
             Map<String, Object> pdtDtlIdAndSize = new HashMap<String, Object>();
+=======
+            errormap.put("error" , "등록되지 않은 상품입니다.");
+            throw new CustomValidationException("GetProduct Error",errormap);
+        }
+
+        Map<String, List<Map<String,Object>>> pdtColors = new HashMap<String, List<Map<String,Object>>>();
+        List<String> pdtImgs = new ArrayList<String>();
+        /*product.getPdt_dtls().forEach(dtl -> {
+            if(!pdtColors.containsKey(dtl.getPdt_color())) {
+                pdtColors.put(dtl.getPdt_color(), new ArrayList<Map<String, Object>>());
+
+        });*/
+
+        product.getPdt_dtls().forEach(dtl -> {
+            //맵완성
+            Map<String,Object> pdtDtlIdAndSize = new HashMap<String, Object>();
+>>>>>>> origin/main
             pdtDtlIdAndSize.put("pdtDtlId", dtl.getId());
             pdtDtlIdAndSize.put("sizeId", dtl.getSize_id());
             pdtDtlIdAndSize.put("sizeName", dtl.getSize_name());
             pdtDtlIdAndSize.put("pdtStock", dtl.getPdt_stock());
 
+<<<<<<< HEAD
             pdtColors.get(dtl.getPdt_color()).add(pdtDtlIdAndSize);
         });
 
@@ -66,11 +85,21 @@ public class ProductServiceImpl implements ProductService {
     //    product.getPdt_imgs().forEach(img -> {
     //        pdtImgs.add(img.getSave_name());
     //    });
+=======
+            //맵이 여기에 들어감 리스트에 정리돼서
+         //  pdtColors.get(dtl.getPdt_color()).add(pdtDtilIdAndSize);
+        });
+
+        product.getPdt_imgs().forEach(img -> {
+            pdtImgs.add(img.getSave_name());
+        });
+>>>>>>> origin/main
 
         ProductRespDto dto = ProductRespDto.builder()
                 .pdtId(product.getId())
                 .pdtName(product.getPdt_name())
                 .pdtPrice(product.getPdt_price())
+<<<<<<< HEAD
                 .pdtSimpleInfo(product.getPdt_simple_info())
                 .pdtDetailInfo(product.getPdt_detail_info())
                 .pdtOptionInfo(product.getPdt_option_info())
@@ -81,4 +110,12 @@ public class ProductServiceImpl implements ProductService {
                 .build();
         return dto;
     }
+=======
+                .pdtImgs(pdtImgs)
+                .build();
+
+        return  dto;
+    }
+
+>>>>>>> origin/main
 }

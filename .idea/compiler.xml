@@ -11,6 +11,7 @@
         <module name="JP-RREAL" />
         <module name="demo" />
         <module name="JP-STUDIO.v1" />
+        <module name="JP-STUDIO" />
         <module name="JP-COPY" />
       </profile>
     </annotationProcessing>
@@ -18,7 +19,11 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="JP-COPY" options="-parameters" />
+<<<<<<< HEAD
       <module name="JP-RREAL" options="-parameters" />
+=======
+      <module name="JP-STUDIO" options="-parameters" />
+>>>>>>> origin/main
       <module name="JP-STUDIO.v1" options="-parameters" />
       <module name="JP_STUDIO.v1" options="-parameters" />
       <module name="StudySpring1" options="-parameters" />

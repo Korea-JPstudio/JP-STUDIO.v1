@@ -22,6 +22,12 @@ public class AccountCtroller {
 
     @GetMapping("/account/signUp")
     public String signUp(){
-        return "/account/signUp";
+        return "account/signUp";
+    }
+
+    @GetMapping("/account/order")
+    public String loadPayment() {
+
+        return "account/pay_page";
     }
 }
