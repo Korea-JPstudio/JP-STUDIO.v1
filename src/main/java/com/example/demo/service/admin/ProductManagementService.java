@@ -16,4 +16,5 @@ public interface ProductManagementService {
 
     public void registerImg(ProductImgReqDto productImgReqDto) throws Exception;
 
+
 }

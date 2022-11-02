@@ -4,6 +4,7 @@ package com.example.demo.api.admin;
 import com.example.demo.aop.annotation.LogAspect;
 import com.example.demo.aop.annotation.ValidAspect;
 import com.example.demo.dto.CMRespDto;
+import com.example.demo.dto.admin.ProductImgReqDto;
 import com.example.demo.dto.admin.ProductRegisterDtlReqDto;
 import com.example.demo.dto.admin.ProductRegisterReqDto;
 import com.example.demo.service.admin.ProductManagementService;
@@ -84,5 +85,14 @@ public class ProductAdminApi {
         return ResponseEntity.ok().body(new CMRespDto<>("Register Successfully", true));
 
     }
+
+    @LogAspect
+    @PostMapping("/product/img")
+    public ResponseEntity<?> registerImg(ProductImgReqDto productImgReqDto) throws Exception{
+        productManagementService.registerImg(productImgReqDto);
+        return ResponseEntity.created(null)
+                .body(new CMRespDto<>("Register Successfully",true));
+    }
+
 
 }

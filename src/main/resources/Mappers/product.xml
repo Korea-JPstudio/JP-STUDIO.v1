@@ -4,6 +4,27 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.repository.ProductRepository">
+    <resultMap id="getProductDtl" type="com.example.demo.domain.ProductDetail">
+        <result property="id" column="pdt_dtl_id"></result>
+        <result property="pdt_color" column="pdt_color"></result>
+        <result property="size_id" column="size_id"></result>
+        <result property="size_name" column="size_name"></result>
+        <result property="pdt_stock" column="pdt_stock"></result>
+    </resultMap>
+
+    <resultMap id="getProductImg" type="com.example.demo.domain.ProductImg">
+        <result property="save_name" column="pdt_id"></result>
+    </resultMap>
+
+    <resultMap id="getProductMst" type="com.example.demo.domain.Product">
+        <result property="id" column="pdt_id"></result>
+        <result property="pdt_name" column="pdt_name"></result>
+        <result property="pdt_price" column="pdt_price"></result>
+        <collection property="pdt_dtls" javaType="list" resultMap="getProductDtl"></collection>
+        <collection property="pdt_imgs" javaType="list" resultMap="getProductImg"></collection>
+    </resultMap>
+
+
     <select id="getProductList" parameterType="hashmap" resultType="com.example.demo.domain.CollectionsProduct">
         select
             pm.id,
@@ -29,5 +50,6 @@
             pm.id
         Limit #{index}, 9
     </select>
-
+    
+        <resultMap id=" " type=""
 </mapper>

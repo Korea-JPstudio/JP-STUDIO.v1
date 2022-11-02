@@ -17,5 +17,8 @@ public class Product {
     private int category_id;
     private int pdt_price;
 
+    private List<ProductDetail> pdt_dtls;
+    private List<ProductImg> pdt_imgs;
+
 
 }

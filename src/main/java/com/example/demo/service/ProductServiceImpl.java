@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Product;
 import com.example.demo.dto.CollectionListRespDto;
+import com.example.demo.dto.ProductRespDto;
 import com.example.demo.exception.CustomValidationException;
 import com.example.demo.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,38 +45,32 @@ public class ProductServiceImpl implements ProductService {
 
         Map<String, List<Map<String,Object>>> pdtColors = new HashMap<String, List<Map<String,Object>>>();
         List<String> pdtImgs = new ArrayList<String>();
-        product.getPdt_dtls().forEach(dtl -> {
+        /*product.getPdt_dtls().forEach(dtl -> {
             if(!pdtColors.containsKey(dtl.getPdt_color())) {
                 pdtColors.put(dtl.getPdt_color(), new ArrayList<Map<String, Object>>());
-            }
-        });
+
+        });*/
 
         product.getPdt_dtls().forEach(dtl -> {
             //맵완성
-            Map<String,Object> pdtDtilIdAndSize = new HashMap<String, Object>();
-            pdtDtilIdAndSize.put("pdtDtilId", dtl.getId());
-            pdtDtilIdAndSize.put("sizeId", dtl.getSize_id());
-            pdtDtilIdAndSize.put("sizeName", dtl.getSize_name());
-            pdtDtilIdAndSize.put("pdtStock", dtl.getPdt_stock());
+            Map<String,Object> pdtDtlIdAndSize = new HashMap<String, Object>();
+            pdtDtlIdAndSize.put("pdtDtlId", dtl.getId());
+            pdtDtlIdAndSize.put("sizeId", dtl.getSize_id());
+            pdtDtlIdAndSize.put("sizeName", dtl.getSize_name());
+            pdtDtlIdAndSize.put("pdtStock", dtl.getPdt_stock());
 
             //맵이 여기에 들어감 리스트에 정리돼서
-            pdtColors.get(dtl.getPdt_color()).add(pdtDtilIdAndSize);
+         //  pdtColors.get(dtl.getPdt_color()).add(pdtDtilIdAndSize);
         });
 
         product.getPdt_imgs().forEach(img -> {
-            pdtImgs.add(img.getSave_name());
+            pdtImgs.add(img.getSava_name());
         });
 
         ProductRespDto dto = ProductRespDto.builder()
                 .pdtId(product.getId())
                 .pdtName(product.getPdt_name())
                 .pdtPrice(product.getPdt_price())
-                .pdtSimpleInfo(product.getPdt_simple_info())
-                .pdtDetailInfo(product.getPdt_detail_info())
-                .pdtOptionInfo(product.getPdt_option_info())
-                .pdtManagementInfo(product.getPdt_management_info())
-                .pdtShippingInfo(product.getPdt_shipping_info())
-                .pdtColors(pdtColors)
                 .pdtImgs(pdtImgs)
                 .build();
 
