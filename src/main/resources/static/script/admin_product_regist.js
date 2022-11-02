@@ -107,14 +107,12 @@ class RegisterEventService {
     #nameInputObj;
     #priceInputObj;
     #registButtonObj;
-    #infoTextareaObjs;
 
     constructor() {
         this.#categorySelectObj = document.querySelectorAll(".product-inputs")[0];
         this.#nameInputObj = document.querySelectorAll(".product-inputs")[1];
         this.#priceInputObj = document.querySelectorAll(".product-inputs")[2];
         this.#registButtonObj = document.querySelector(".regist-button");
-        this.#infoTextareaObjs = document.querySelectorAll(".product-inputs");
 
         this.init();
 
@@ -147,21 +145,6 @@ class RegisterEventService {
                 this.#priceInputObj.disabled = false;
             }else{
                 this.#priceInputObj.disabled = true;
-            }
-        }
-
-    }
-
-    addPriceInputEvent= () => {
-        this.#priceInputObj.onkeyup = () => {
-            const registInfo = document.querySelector(".regist-info");
-
-            if(this.#priceInputObj.value.length != 0){
-                this.#registButtonObj.disabled = false;
-                registInfo.classList.remove("regist-info-invisible");
-            }else{
-                this.#registButtonObj.disabled = true;
-                registInfo.classList.add("regist-info-invisible");
             }
         }
 

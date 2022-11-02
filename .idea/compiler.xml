@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="JP-STUDIO" />
+        <module name="JP-STUDIO.1.0.1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />
@@ -14,6 +15,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="JP-STUDIO" options="-parameters" />
+      <module name="JP-STUDIO.1.0.1" options="-parameters" />
     </option>
   </component>
 </project>
