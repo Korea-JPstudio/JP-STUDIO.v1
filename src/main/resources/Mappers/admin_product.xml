@@ -5,6 +5,34 @@
 
 <mapper namespace="com.example.demo.repository.admin.ProductManagementRepository">
 
+    <resultMap id="product_category" type="com.example.demo.domain.ProductCategory">
+        <result property="category_id" column="id"/>
+        <result property="group_id" column="group_id"/>
+        <result property="category_name" column="category_name"/>
+    </resultMap>
+
+    <select id="getCategoryList" resultMap="product_category"><!--  join하면 무조건 resultMap-->
+        select
+        id,
+        group_id,
+        category_name
+        from
+        pdt_category_mst
+    </select>
+
+    <insert id="saveProductMst" parameterType="com.example.demo.domain.Product">
+        insert into
+        pdt_mst
+        values(
+        0,
+        #{pdt_name},
+        #{category_id},
+        #{pdt_price},
+        now(),
+        now()
+        )
+    </insert>
+
     <select id ="getProductMstList" resultType="com.example.demo.domain.OptionProductMst">
         select
             pm.id as pdt_id,
@@ -14,6 +42,7 @@
             pdt_mst pm
             left outer join pdt_category_mst pcm on(pcm.id = pm.category_id)
     </select>
+
 
     <select id="getSizeList" parameterType="Integer" resultType="com.example.demo.domain.OptionProductSize">
         select

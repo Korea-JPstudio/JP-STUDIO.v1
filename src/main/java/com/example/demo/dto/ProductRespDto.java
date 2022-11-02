@@ -6,14 +6,10 @@ import lombok.Data;
 import java.util.List;
 import java.util.Map;
 
-<<<<<<< HEAD
 
-@Builder
-@Data
-=======
 @Data
 @Builder
->>>>>>> origin/main
+
 public class ProductRespDto {
 
     private int pdtId;

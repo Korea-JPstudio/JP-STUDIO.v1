@@ -1,12 +1,8 @@
 package com.example.demo.dto.admin;
 
-<<<<<<< HEAD
+
 
 import com.example.demo.domain.ProductDetail;
-
-=======
-import com.example.demo.domain.ProductDetail;
->>>>>>> origin/main
 import lombok.Data;
 
 @Data
