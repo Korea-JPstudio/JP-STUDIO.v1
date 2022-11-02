@@ -64,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
         });
 
         product.getPdt_imgs().forEach(img -> {
-            pdtImgs.add(img.getSava_name());
+            pdtImgs.add(img.getSave_name());
         });
 
         ProductRespDto dto = ProductRespDto.builder()

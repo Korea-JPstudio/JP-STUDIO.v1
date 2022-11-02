@@ -146,7 +146,7 @@ class CollectionsService {
             collectionProducts.innerHTML += `
             <li class="collection-product">
                 <div class="product-img">
-                    <img src="/static/images/zip-up-neck-vest-ivory.jpg">
+                    <img src="/static/upload/product/${product.mainImg}">
                 </div>
                 <div class="product-name">
                     ${product.productName}

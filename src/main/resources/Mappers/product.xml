@@ -6,7 +6,6 @@
 <mapper namespace="com.example.demo.repository.ProductRepository">
     <resultMap id="getProductDtl" type="com.example.demo.domain.ProductDetail">
         <result property="id" column="pdt_dtl_id"></result>
-        <result property="pdt_color" column="pdt_color"></result>
         <result property="size_id" column="size_id"></result>
         <result property="size_name" column="size_name"></result>
         <result property="pdt_stock" column="pdt_stock"></result>
@@ -50,6 +49,5 @@
             pm.id
         Limit #{index}, 9
     </select>
-    
-        <resultMap id=" " type=""
+
 </mapper>

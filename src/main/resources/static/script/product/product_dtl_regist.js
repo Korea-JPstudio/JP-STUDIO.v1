@@ -144,7 +144,7 @@ class Option {
   }
 
   addSubmitEvent() {
-    const registButton = document.querySelectorAll(".regist-button"[0]);
+    const registButton = document.querySelectorAll(".regist-button")[0];
 
     registButton.onclick = () =>{
       const productDtlParams = {
