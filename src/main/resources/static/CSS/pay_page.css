@@ -127,20 +127,17 @@ tfoot button {
     margin: 5px 5px 0 0;
 }
 
-#phone {
-    padding:2px 4px;
-    width:60px;
-}
 
-#phone1 {
-    width:80px;
+.phone-number, .phone-number1 {
+    width:180px;
     margin:0px 4px;
     padding:2px 4px;
 }
 
-#email {
-    width:180px;
+.principal-email {
+    width:230px;
     padding:2px 4px;
+    margin-bottom: 5px;
 }
 .txtinfo {
     list-style: none;
@@ -183,18 +180,25 @@ tfoot button {
     margin-top: 0;
 }
 .buy {
-    display: flex;
-    align-items: center;
+ 
+    height: 200px;
+
+    display:flex;
+    justify-content: flex-end;
 
     margin-top: 20px;
-    width: 100%;
+
 }
 
-.buy-text {
-    margin-right: 20px;
-    font-size: 12px;
-}
 
-.buy-lb{
-    font-size: 12px;
+.payment-button{
+
+    width: 150px;
+    height: 80px;
+    color: white;
+    background-color: black;
+
+    font-size: 15px;
+    cursor: pointer;
+
 }
