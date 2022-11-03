@@ -83,7 +83,6 @@ public class ProductManagementServiceImpl implements ProductManagementService {
             Resource resource = resourceLoader.getResource("classpath:static/upload/product");
             String filePath = null;
 
-
             //프로덕트까지 못찾으면
 
             try{
@@ -103,13 +102,16 @@ public class ProductManagementServiceImpl implements ProductManagementService {
             } catch (IOException e){
                 throw new RuntimeException(e);
             }
+
             String originName = file.getOriginalFilename();
             String extension = originName.substring(originName.lastIndexOf("."));
             String saveName = UUID.randomUUID().toString().replace("-","") + extension;
             Path path = Paths.get(filePath + "/" + saveName);
 
+
             try {
                 Files.write(path, file.getBytes());
+
             } catch (IOException e) {
                 throw new CustomInternalServerErrorException(e.getMessage());
             }
