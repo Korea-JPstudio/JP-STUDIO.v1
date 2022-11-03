@@ -19,7 +19,6 @@ class ImportApi {
         //const pdtName = document.querySelector(".product-name").textContent;
         //const pdtPrice = document.querySelector(".product-price").textContent;
         const name = document.querySelector("#customer").value;
-        const email = document.querySelector(".principal-email").value;
         const zoneCode = document.querySelector(".postcode").value;
         const addressAll = document.querySelector(".address").value;
         const addressDetail = document.querySelector(".detailAddress").value;
@@ -33,7 +32,6 @@ class ImportApi {
                 merchant_uid: "PRODUCT-" + new Date().getTime(),
                 //name: pdtName,
                 //amount: pdtPrice,
-                buyer_email: email,
                 buyer_name: name,
                 buyer_tel: phone,
                 buyer_addr: address,

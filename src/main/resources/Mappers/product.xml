@@ -50,6 +50,26 @@
         Limit #{index}, 9
     </select>
 
+    <select id="getProduct" resultMap="getProductMst">
+        SELECT
+        pm.id AS pdt_id,
+        pm.pdt_name,
+        pm.pdt_price,
+        pd.id AS pdt_dtl_id,
+        pd.size_id,
+        psm.size_name,
+        pd.pdt_stock,
+        pim.save_name
+        FROM
+        pdt_mst pm
+        LEFT OUTER JOIN pdt_dtl pd ON(pd.pdt_id = pm.id)
+        LEFT OUTER JOIN pdt_size_dtl psd ON(psd.id = pd.size_id)
+        LEFT OUTER JOIN pdt_size_mst psm ON(psm.id = psd.size_id)
+        LEFT OUTER JOIN pdt_image_mst pim ON(pim.pdt_id = pm.id)
+        WHERE
+        pm.id = #{pdtId}
+    </select>
+
     <select id="getPaymentProduct" resultType="com.example.demo.domain.PaymentProduct">
 
         SELECT
