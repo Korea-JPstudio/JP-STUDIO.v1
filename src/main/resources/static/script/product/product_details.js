@@ -1,10 +1,22 @@
+const pName = document.querySelector(".pName").innerHTML;
+const productName = document.querySelectorAll(".product-name");
 const size = document.querySelector(".size-select");
 const plus_btns = document.querySelectorAll(".plus");
 const minus_btns = document.querySelectorAll(".minus");
 const counts = document.querySelectorAll(".pdt-tbody input"); //수량 값
 
+let totalPrice = document.querySelector(".totalPrice");
+let totalPriceValue = document.querySelector(".totalPrice").innerHTML;
+Number(totalPriceValue);
+console.log(totalPriceValue);
+
+totalPrice = totalPriceValue;
+
 let price = document.querySelector(".price-value").innerHTML;
 price = Number(price);
+
+let sum = 0;
+Number(sum);
 
 const XL = document.querySelector(".XL")
 const L = document.querySelector(".L")
@@ -13,7 +25,12 @@ const S = document.querySelector(".S")
 const XS = document.querySelector(".XS")
 let pdtPrice = document.querySelectorAll(".pdt-price-td");
 
-for(let i = 0 ; i< pdtPrice.length; i++){
+
+for(let i = 0; i<productName.length; i++) {
+    productName[i].innerHTML = pName;
+}
+
+for(let i = 0 ; i< pdtPrice.length; i++) {
     pdtPrice[i].innerHTML += `
         ₩${price}
     `
@@ -43,27 +60,36 @@ size.onchange = () => {
 }
     
 
+
 plus_btns[0].onclick = () => {
     counts[0].value++;
 
+    sum = price * counts[0].value;
+
     pdtPrice[0].innerHTML = ``;
     pdtPrice[0].innerHTML += `
-        ₩${price * counts[0].value}
+        ₩${sum}
     `;
 
-
+    totalPrice.innerHTML = ``;
+    totalPrice.innerHTML = `${sum}`;
 }
 minus_btns[0].onclick = () => {
+
     if(counts[0].value == 0){
         return 0;
     }else{
         counts[0].value--;
     }
+    sum = price * counts[0].value;
 
     pdtPrice[0].innerHTML = ``;
     pdtPrice[0].innerHTML += `
-        ₩${price * counts[0].value}
+        ₩${sum}
     `;
+
+    
+    totalPrice.innerHTML = `${sum}`;
 }
 
 plus_btns[1].onclick = () => {
@@ -150,11 +176,9 @@ minus_btns[4].onclick = () => {
     `;
 }
 
-const totalPrice = document.querySelector(".totalPrice").innerHTML;
-Number(totalPrice);
 
-let sum = 0;
-Number(sum);
+
+
 
 for(let i = 0; i<pdtPrice.length; i++){
     sum += Number(pdtPrice[i].innerHTML);
