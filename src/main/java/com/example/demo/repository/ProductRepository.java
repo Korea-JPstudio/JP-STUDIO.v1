@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import com.example.demo.domain.CollectionsProduct;
+import com.example.demo.domain.PaymentProduct;
 import com.example.demo.domain.Product;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,5 +12,6 @@ import java.util.Map;
 public interface ProductRepository {
     public List<CollectionsProduct> getProductList(Map<String,Object> map) throws Exception;
     public Product getProduct(int pdtId) throws Exception;
+    public PaymentProduct getPaymentProduct(int pdtDtlId) throws Exception;
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Product;
+import com.example.demo.dto.CheckoutRespDto;
 import com.example.demo.dto.CollectionListRespDto;
 import com.example.demo.dto.ProductRespDto;
 import com.example.demo.exception.CustomValidationException;
@@ -72,5 +73,11 @@ public class ProductServiceImpl implements ProductService {
 
         return  dto;
     }
+    @Override
+    public CheckoutRespDto getCheckoutProduct(int pdtDtlId) throws Exception {
+        return productRepository.getPaymentProduct(pdtDtlId).toDto();
 
+    }
 }
+
+

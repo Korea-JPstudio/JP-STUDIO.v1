@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html xmlns="http://www.thymeleaf.org">
 <head th:replace="~{fragment/head :: head}"></head>
 <head>
@@ -6,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/static/CSS/Main1.css">
+     <link rel="stylesheet" href="/static/images">
     <link rel="stylesheet" href="/static/CSS/Details.css">
     <link rel="stylesheet" href="/static/CSS/detail-body.css">
     
@@ -22,7 +25,7 @@
             <div class="infoArea">
                 <div class="price">
                     <form action="">
-                        <div class="pName" colspan="3" >CORDUROY WES SHIRT [NAVY]</div>
+                        <div class="pName" th:value="${data.pdtName}" colspan="3"></div>
                         <div class="line"></div>
                     <table class="detail-table">
                         <tr>
