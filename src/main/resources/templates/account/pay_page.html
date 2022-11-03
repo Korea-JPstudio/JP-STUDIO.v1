@@ -87,7 +87,7 @@
                     <tbody>
                         <tr>
                             <th><label for="customer">주문하시는 분</label></th>
-                            <td colspan="8"><input type="text" id="customer" name="customer"required></td>
+                            <td colspan="8"><input type="text" id="customer" name="customer" th:value="${user.username}" required></td>
                         </tr>
                         <tr>
                             <th><label for="address">주소</label></th>

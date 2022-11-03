@@ -13,10 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequiredArgsConstructor
 public class CollectionsController {
-
-    private final ProductService productService;
 
     @GetMapping("/collections/{category}")
     public String loadCollections(@PathVariable String category) {
@@ -29,15 +26,7 @@ public class CollectionsController {
         return "product/product_detail";
     }
 
-    @GetMapping("/checkout")
-    public String loadPayment(Model model,
-                              @RequestParam int pdtDtlId,
-                              @AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception {
-        CheckoutRespDto checkoutRespDto = productService.getCheckoutProduct(pdtDtlId);
-        model.addAttribute("data", checkoutRespDto);
-        model.addAttribute("user", principalDetails.getUser());
-        return "product/product_order";
-    }
+
 
 
 }
