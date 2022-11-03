@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head}"></head>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,8 @@
 <body>
 
   <div id="container">
+      <div th:replace="~{fragment/header :: header}"></div>
+      <div th:replace="~{fragment/aside :: aside}"></div>
     <div id="title-box"> 
       <div id="title"><h2>Q&A</h2></div> 
     </div>

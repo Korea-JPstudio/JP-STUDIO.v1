@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head}"></head>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -11,39 +12,8 @@
 </head>
 <body>
     <div id="container">
-            <div class="aaaa">
-            <div>
-              <h1 style="margin:20px 0 40px 40px">JP Studio</h1>
-            </div>
-            <div class="right-menu">
-                <ul>
-                    <li><a href="/Login">LOGIN</a></li>
-                    <li>REGISTER</li>
-                    <li>MY ACCOUNT</li>
-                    <li>BAG</li>
-                </ul>
-            </div>
-          </div>
-        <div class ="left-side">
-            <ul class="big_menu">
-                <li class="menu-list"><a href="#">SHOP</a>
-                    <ul class="small_menu">
-                        <li><a href="#">Collaboration</a></li>
-                        <li><a href="#">New Arrival</a></li>
-                        <li><a href="#">Outwear</a></li>
-                        <li><a href="#">Knitwear</a></li>
-                        <li><a href="#">Shirts</a></li>
-                        <li><a href="#">Innerwear</a></li>
-                        <li><a href="#">Bottom</a></li>
-                        <li><a href="#">Accessories</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">COLLECTION</a></li>
-                <li><a href="#">Q & A</a></li>
-                <li><a href="#">REVIEW</a></li>
-                <li><a href="#">NOTICE</a></li>
-            </ul>
-        </div>
+        <div th:replace="~{fragment/header :: header}"></div>
+        <div th:replace="~{fragment/aside :: aside}"></div>
         <main>
               <ul class="collection-products">
                 <li class="collection-product">

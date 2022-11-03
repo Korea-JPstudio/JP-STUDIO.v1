@@ -1,56 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head}"></head>
 <head>
 <meta charset="UTF-8">
 <title>MyAccount</title>
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="stylesheet" href="/static/CSS/MyAccount.css">
  <link rel="stylesheet" href="/static/CSS/Main1.css">
-<style>
-    body{
-    height: 100vh;
-	width: 100vw;
-	background-repeat : no-repeat;
-	background-size : cover;
-    background-attachment: fixed;
-    }
-</style>
 </head>
 <body>
     <div id="container">
-            <div class="aaaa">
-            <div>
-              <h1 style="margin:20px 0 40px 40px">JP Studio</h1>
-            </div>
-            <div class="right-menu">
-                <ul>
-                    <li><a href="/Login">LOGIN</a></li>
-                    <li>REGISTER</li>
-                    <li>MY ACCOUNT</li>
-                    <li>BAG</li>
-                </ul>
-            </div>
-          </div>
-        <div class ="left-side">
-            <ul class="big_menu">
-                <li class="menu-list"><a href="#">SHOP</a>
-                    <ul class="small_menu">
-                        <li><a href="#">Collaboration</a></li>
-                        <li><a href="#">New Arrival</a></li>
-                        <li><a href="#">Outwear</a></li>
-                        <li><a href="#">Knitwear</a></li>
-                        <li><a href="#">Shirts</a></li>
-                        <li><a href="#">Innerwear</a></li>
-                        <li><a href="#">Bottom</a></li>
-                        <li><a href="#">Accessories</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">COLLECTION</a></li>
-                <li><a href="#">Q & A</a></li>
-                <li><a href="#">REVIEW</a></li>
-                <li><a href="#">NOTICE</a></li>
-            </ul>
-        </div>
+        <div th:replace="~{fragment/header :: header}"></div>
+        <div th:replace="~{fragment/aside :: aside}"></div>
         <div id="center-box">
             <li class="main-li">
                 <strong>MY ACCOUNT</strong>

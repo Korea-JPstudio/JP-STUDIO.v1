@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head}"></head>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -10,39 +11,9 @@
 </head>
 <body>
 	<div id="container">
-        <div class="aaaa">
-            <div>
-              <h1 style="margin:20px 0 40px 40px">JP Studio</h1>
-            </div>
-            <div class="right-menu">
-                <ul>
-                    <li><a href="Login.html">LOGIN</a></li>
-                    <li>REGISTER</li>
-                    <li>MY ACCOUNT</li>
-                    <li>BAG</li>
-                </ul>
-            </div>
-          </div>
-        <div class ="left-side">
-            <ul class="big_menu">
-                <li class="menu-list"><a href="#">SHOP</a>
-                    <ul class="small_menu">
-                        <li><a href="#">Collaboration</a></li>
-                        <li><a href="#">New Arrival</a></li>
-                        <li><a href="#">Outwear</a></li>
-                        <li><a href="#">Knitwear</a></li>
-                        <li><a href="#">Shirts</a></li>
-                        <li><a href="#">Innerwear</a></li>
-                        <li><a href="#">Bottom</a></li>
-                        <li><a href="#">Accessories</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">COLLECTION</a></li>
-                <li><a href="#">Q & A</a></li>
-                <li><a href="#">REVIEW</a></li>
-                <li><a href="#">NOTICE</a></li>
-            </ul>
-        </div>
+
+        <div th:replace="~{fragment/header :: header}"></div>
+        <div th:replace="~{fragment/aside :: aside}"></div>
         <div class = "signup">
         	<h3 class ="ktg">회원가입</h2>
         	<br><br>
@@ -63,27 +34,16 @@
             <input type="text">
 			</div>
             <div class="field birth">
-            <b>주민등록번호</b>
+            <b>전화번호</b>
            		<div class = "field">
           			<input type="text">
-       				<input type="text">
+                    <input type="text">
+                    <input type="text">
        			</div>
        		</div>
-            <div class="field tel-number">
-                <br>
-                <b>우편번호</b>
-                <div>
-                    <input type="text" class="postcode" name="zipcode" placeholder="우편번호">
-                    <button type="button" id="postcode-search" onclick="checkPost()" >우편번호 검색</button>
-                </div>
-                <input type="text" class="address" name="add1" placeholder="주소">
-                <input type="text" class="detailAddress" name="add2" placeholder="상세주소">
-            </div>
         	<button type="submit" class="account-button" style="width:100%; height:40px" >가입하기</button>
         </div>
     </div>
-        <script defer src= "/static/script/account/account_Address.js"></script>
-        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script src="/static/script/main/aside_menu.js"></script>
         <script src="/static/script/account/register.js"></script>
 </body>
