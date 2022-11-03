@@ -139,7 +139,7 @@ class RegisterEventService {
         }
     }
 
-    addNameInputEvent= () => {
+    addNameInputEvent() {
         this.#nameInputObj.onkeyup = () => {
             if(this.#nameInputObj.value.length != 0){
                 this.#priceInputObj.disabled = false;
@@ -148,6 +148,16 @@ class RegisterEventService {
             }
         }
 
+    }
+
+    addPriceInputEvent() {
+        this.#priceInputObj.onkeyup = () => {
+            if(this.#priceInputObj.value.length != 0){
+                this.#registButtonObj.disabled = false;
+            }else{
+                this.#registButtonObj.disabled = true;
+            }
+        }
     }
 
     addRegistButtonEvent= () => {
@@ -163,7 +173,7 @@ class RegisterEventService {
             const productApi = new ProductApi();
             if(productApi.createProductRequest(productMst.getObject())){
                 alert("상품 등록 완료");
-                location.reload();
+                location.href="/admin/product/register/dtl";
             }
         }
     }
