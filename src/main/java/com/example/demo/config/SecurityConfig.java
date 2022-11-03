@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/account/login")
                 .loginProcessingUrl("/account/login")
                 .failureHandler(new AuthFailureHandler())
-                .defaultSuccessUrl("/index"); // 돌려줄곳이없으면 여기로
+                .defaultSuccessUrl("/main"); // 돌려줄곳이없으면 여기로
 
     }
 }

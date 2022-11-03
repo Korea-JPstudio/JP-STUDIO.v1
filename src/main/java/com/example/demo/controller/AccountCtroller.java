@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class AccountCtroller {
 
+    @GetMapping("/main")
+    public String loadMain() {
+        return "main";
+    }
+
     @GetMapping("/account/login")
     public String login(Model model, @RequestParam @Nullable String email, @RequestParam @Nullable String error){
         model.addAttribute("email", email == null ? "" : email);
