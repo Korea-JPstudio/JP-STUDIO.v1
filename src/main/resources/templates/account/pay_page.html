@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragment/head :: head}"></head>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>order</title>
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="/static/CSS/Main1.css">
-<link rel="stylesheet" href="/static/CSS/shopping.css">
+<link rel="stylesheet" href="/static/CSS/pay_page.css">
+</head>
 <body>
     <div id="container">
         <div th:replace="~{fragment/header :: header}"></div>
@@ -113,32 +108,14 @@
                         <tr>
                             <th><label for="phone">휴대전화</label></th>
                             <td colspan="8">
-                                <select id="phone" name="phone" required>
-                                    <option value="010">010</option>
-                                    <option value="011">011</option>
-                                    <option value="016">016</option>
-                                    <option value="017">017</option>
-                                    <option value="018">018</option>
-                                 </select>
-                            -
-                            <input type="text" id="phone1" name="phone1" required>
-                            -
-                            <input type="text" id="phone1" name="phone1" required>
+                                <input type="text" class="phone-number">
                             </td>
                         </tr>
                         <tr>
                             <th label for="email">이메일</th>
                                 <td colspan="8">
-                                    <input type="text" id="email" name="email" required> 
+                                    <input type="email" class="principal-email"> 
                                 
-                                @
-                                <select id="email1" name="email1" required>
-                                        <option value="naver.com">naver.com</option>
-                                        <option value="gmail.com">gmail.com</option>
-                                        <option value="kakao.com">kakao.com</option>
-                                        <option value="hanmail.com">hanmail.com</option>
-                                        <option value="nate.com">hanmail.com</option>
-                                </select>
                                     <li class="txtinfo">- 이메일을 통해 주문처리과정을 보내드립니다.</li>
                                     <li class="txtinfo">- 이메일 주소란에는 반드시 수신가능한 이메일 주소를 입력해주세요.</li>
                                 </td>
@@ -166,8 +143,8 @@
                                         <div class="address">
                                             <input id="sameaddr" name="sameaddr" type="radio">
                                             <label for="sameaddr">주문자 정보와 동일</label>
-                                            <input id="sameaddr1" name="sameaddr1" type="radio">
-                                            <label for="sameaddr1">새로운 배송지</label>
+                                            <input id="sameaddr" name="sameaddr" type="radio">
+                                            <label for="sameaddr">새로운 배송지</label>
                                         </div>
                                     </td>
                                 </tr>
@@ -193,18 +170,9 @@
                                 <tr>
                                     <th><label for="phone">휴대전화</label></th>
                                     <td colspan="8">
-                                        <select id="phone" name="phone" required>
-                                            <option value="010">010</option>
-                                            <option value="011">011</option>
-                                            <option value="016">016</option>
-                                            <option value="017">017</option>
-                                            <option value="018">018</option>
-                                         </select>
-                                    -
-                                    <input type="text" id="phone1" name="phone1" required>
-                                    -
-                                    <input type="text" id="phone1" name="phone1" required>
-                                </td>
+                                        <input type="text" class="phone-number1">
+                                      
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th><label for="delivery-msg">배송메세지</label></th>
@@ -263,17 +231,14 @@
                                 </table>
                             </div>
                         <div class="buy">
-                            <p class="buy-text"><strong>결제수단</strong></p>
-                            <td>
-                                <input type="checkbox" id="paymethod" name="paymethod" required>
-                                <label for="paymethod" class="buy-lb">결제 수단과 입력정보를 다음에도 사용</label>
-                            </td>
+                          <button type="button" class="payment-button">결제하기</button>
                         </div>
                     </ul>
                 </div>
             </div>          
         </div>
     </div>
+    <script src= "/static/script/account/pay_page.js"></script>
     <script defer src= "/static/script/account/account_Address.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/static/script/main/aside_menu.js"></script>
