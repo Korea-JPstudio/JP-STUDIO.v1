@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head :: head}"></head>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,8 @@
     <link rel="stylesheet" href="/CSS/Shopping-bag.css">
 </head>
 <body>
+<div th:replace="~{fragment/header :: header}"></div>
+<div th:replace="~{fragment/aside :: aside}"></div>
     <div class="bag-title-area">
         <h2>BAG</h2>
     </div>

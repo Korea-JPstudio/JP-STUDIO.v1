@@ -17,8 +17,8 @@ public class User {
     private String username;
     private String password;
     private String name;
+    private String phone;
     private String provider;
-    private String address;
     private int role_id;
     private LocalDateTime create_date;
     private LocalDateTime update_date;

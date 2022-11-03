@@ -35,20 +35,18 @@ public class SignUpDto {
     @Pattern(regexp = "^[가-힇]*$", message = "이름은 한글만 입력 가능합니다", groups = ValidationGroups.PatternCheckGroup.class)
     private String name;
 
-    @Size(min = 1, max = 13, message = "생년월일이 제대로 입력 되지않았습니다." ,groups = ValidationGroups.SizeGroup.class)
-    @NotBlank(message = "생년월일은 비워 둘 수 없습니다." , groups = ValidationGroups.NotBlankGroup.class)
-    @Pattern(regexp = "^[0-9]*$", message = "생년월일 숫자만 입력 가능합니다", groups = ValidationGroups.PatternCheckGroup.class)
-    private String registerNumber;
+    @Size(min = 1, max = 11, message = "휴대폰번호가 제대로 입력 되지않았습니다." ,groups = ValidationGroups.SizeGroup.class)
+    @NotBlank(message = "휴대폰번호는 비워 둘 수 없습니다." , groups = ValidationGroups.NotBlankGroup.class)
+    @Pattern(regexp = "^[0-9]*$", message = "휴대폰번호는 숫자만 입력 가능합니다", groups = ValidationGroups.PatternCheckGroup.class)
+    private String phone;
 
-    @NotBlank(message = "주소를 비워 둘 수 없습니다." , groups = ValidationGroups.NotBlankGroup.class)
-    private String address;
 
     public User toEntity(){
         return User .builder()
                 .username(username)
                 .password(new BCryptPasswordEncoder().encode(password))
                 .name(name)
-                .address(address)
+                .phone(phone)
                 .role_id(1)
                 .build();
     }

@@ -9,8 +9,7 @@ let user = {
     password : accountInput[1].value,
     reconfirm : accountInput[2].value,
     name : accountInput[3].value,
-    registerNumber : accountInput[4].value + accountInput[5].value,
-    address : accountInput[6].value + accountInput[7].value + accountInput[8].value
+    registerNumber : accountInput[4].value + accountInput[5].value + accountInput[6].value
     }
 
 let ajaxOption = {

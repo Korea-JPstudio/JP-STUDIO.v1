@@ -16,6 +16,7 @@
         <result property="username" column="username" />
         <result property="password" column="password" />
         <result property="name" column="name" />
+        <result property="phone" column="phone" />
         <result property="provider" column="provider" />
         <result property="role_id" column="role_id" />
         <result property="create_date" column="create_date" />
@@ -48,6 +49,7 @@
             #{username},
             #{password},
             #{name},
+            #{phone},
             #{provider},
             #{role_id},
             now(),
