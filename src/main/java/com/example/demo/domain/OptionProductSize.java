@@ -18,5 +18,6 @@ public class OptionProductSize {
                 .sizeId(size_id)
                 .sizeName(size_name)
                 .build();
+
     }
 }

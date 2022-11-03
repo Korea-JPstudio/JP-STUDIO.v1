@@ -40,8 +40,6 @@ size.onchange = () => {
     let pdt_size = size.options[size.selectedIndex].value;
     console.log(pdt_size);
 
-    // let check = [];
-
     if(pdt_size == 'XL'){
         XL.style.display = 'table-row';
     }
