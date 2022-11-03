@@ -212,6 +212,7 @@ class RegisterService {
     }
 
     setRegisterHeaderEvent() {
+        
         new RegisterEventService();
     }
 }
