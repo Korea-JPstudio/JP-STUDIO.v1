@@ -29,8 +29,8 @@ public class AccountCtroller {
     }
 
     @GetMapping("/account/login")
-    public String login(Model model, @RequestParam @Nullable String email, @RequestParam @Nullable String error){
-        model.addAttribute("email", email == null ? "" : email);
+    public String login(Model model, @RequestParam @Nullable String username, @RequestParam @Nullable String error){
+        model.addAttribute("username", username == null ? "" : username);
         model.addAttribute("error", error == null ? "" : error);
         return "/account/login";
     }

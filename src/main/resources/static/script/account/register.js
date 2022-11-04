@@ -9,7 +9,7 @@ let user = {
     password : accountInput[1].value,
     reconfirm : accountInput[2].value,
     name : accountInput[3].value,
-    registerNumber : accountInput[4].value + accountInput[5].value + accountInput[6].value
+    phone : accountInput[4].value + accountInput[5].value + accountInput[6].value
     }
 
 let ajaxOption = {
@@ -22,7 +22,7 @@ let ajaxOption = {
     success : (response, textStatus, request) => {
         alert("회원가입에 성공하셨습니다.")
         const successURI = request.getResponseHeader("Location");
-        location.replace(successURI + "?email=" + response.data);
+        location.replace(successURI + "?username=" + response.data);
     },
     error : (error) => {
               console.log(error.responseJSON);
