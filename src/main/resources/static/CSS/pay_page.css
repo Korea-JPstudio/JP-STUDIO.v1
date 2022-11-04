@@ -96,8 +96,13 @@ tfoot button {
     border-bottom: 1px solid #eee;
 }
 
-.button2 {
-    text-align: right;
+.button {
+ 
+    display: flex;
+    flex-direction: left;
+
+
+
 }
 
 #customer {
@@ -111,7 +116,7 @@ tfoot button {
 
 }
 
-#search {
+#search, .address-button {
     border: 1px solid #eee;
     background: #eee;
     color:#000;
@@ -127,6 +132,10 @@ tfoot button {
     margin: 5px 5px 0 0;
 }
 
+.address-button{
+    display: flex;
+    align-items: flex-end;
+}
 
 .phone-number, .phone-number1 {
     width:180px;
