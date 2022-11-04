@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.User;
+import com.example.demo.domain.UserAddress;
 import com.example.demo.dto.SignUpDto;
+import com.example.demo.dto.UserAddressReqDto;
 import com.example.demo.exception.CustomInternalServerErrorException;
 import com.example.demo.exception.CustomValidationException;
 import com.example.demo.repository.AccountRepository;
@@ -38,5 +40,10 @@ public class AccountServiceImpl implements AccountService {
         if(result == 0) {
             throw new CustomInternalServerErrorException("회원가입중 문제가 발생했습니다");
         }
+    }
+
+    @Override
+    public void address(UserAddressReqDto userAddressReqDto) throws Exception {
+        UserAddress userAddress = userAddressReqDto.toEntity();
     }
 }

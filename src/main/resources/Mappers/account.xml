@@ -23,6 +23,19 @@
         <result property="update_date" column="update_date" />
     </resultMap>
 
+    <update id="saveUserAddress" parameterType="com.example.demo.domain.UserAddress">
+        update
+            user_dtl
+        set
+            address1 = ${address1},
+            address2 = ${address2},
+            address3 = ${address3},
+            update_date = now()
+        where
+            id = #{id}
+
+    </update>
+
 
     <select id="findUserByEmail" parameterType="String" resultMap="user">
         select

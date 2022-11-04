@@ -4,6 +4,7 @@ package com.example.demo.api;
 import com.example.demo.aop.annotation.LogAspect;
 import com.example.demo.dto.CMRespDto;
 import com.example.demo.dto.SignUpDto;
+import com.example.demo.dto.UserAddressReqDto;
 import com.example.demo.dto.validation.ValidationSequence;
 import com.example.demo.securiry.PrincipalDetails;
 import com.example.demo.service.AccountService;
@@ -26,6 +27,7 @@ import java.util.Map;
 public class AccountApi {
 
     private final AccountService accountService;
+
     @LogAspect
     @PostMapping("/signUp")
     public ResponseEntity<?> SignUp(@Validated(ValidationSequence.class) @RequestBody SignUpDto signUpDto, BindingResult bindingResult) throws Exception {
@@ -40,5 +42,16 @@ public class AccountApi {
     public ResponseEntity<?> getPrincipal(@AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception {
         return ResponseEntity.ok().body(new CMRespDto<>("유저 정보 가져오기", principalDetails != null ? principalDetails.getUser() : null));
     }
+
+    @PostMapping("/address")
+    public ResponseEntity<?> saveAddress(UserAddressReqDto userAddressReqDto) throws Exception {
+
+        accountService.address(userAddressReqDto);
+
+        return ResponseEntity.created(null)
+                .body(new CMRespDto<>("Register successfully", true));
+    }
+
+
 
 }
