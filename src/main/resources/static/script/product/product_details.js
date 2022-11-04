@@ -186,3 +186,35 @@ totalPrice.innerHTML = ``;
 totalPrice.innerHTML += `
     ${sum}
 `;
+
+
+
+
+
+class ProductApi {
+    static #instance = null;
+    static getInstance() {
+        if(this.#instance == null) {
+            this.#instance = new ProductApi();
+        }
+        return this.#instance;
+    }
+}
+
+
+class ProductDetail {
+
+    constructor() {
+        const responseData = ProductApi.getInstance().getProductData();
+	this.loadProductDetail(responseData);
+    }
+loadProductDetail(responseData) {
+        document.querySelector(".pName").textContent = responseData.pdtName;
+        document.querySelector(".pdt-price").textContent = "\\" + responseData.pdtPrice;
+        
+    }
+}
+
+window.onload = () => {
+    new ProductDetail();
+}
