@@ -27,8 +27,10 @@
     <select id="findUserByEmail" parameterType="String" resultMap="user">
         select
             um.id,
+            um.name,
             um.username,
             um.password,
+            um.phone,
             um.provider,
             um.role_id,
             rm.name as role_name,

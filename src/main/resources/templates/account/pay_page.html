@@ -87,7 +87,7 @@
                     <tbody>
                         <tr>
                             <th><label for="customer">주문하시는 분</label></th>
-                            <td colspan="8"><input type="text" id="customer" name="customer" th:value="${user.username}" required></td>
+                            <td colspan="8"><input type="text" id="customer" name="customer" th:value="${user.name}" required></td>
                         </tr>
                         <tr>
                             <th><label for="address">주소</label></th>
@@ -108,17 +108,8 @@
                         <tr>
                             <th><label for="phone">휴대전화</label></th>
                             <td colspan="8">
-                                <input type="text" class="phone-number">
+                                <input type="text" class="phone-number" th:value="${user.phone}">
                             </td>
-                        </tr>
-                        <tr>
-                            <th label for="email">이메일</th>
-                                <td colspan="8">
-                                    <input type="email" class="principal-email"> 
-                                
-                                    <li class="txtinfo">- 이메일을 통해 주문처리과정을 보내드립니다.</li>
-                                    <li class="txtinfo">- 이메일 주소란에는 반드시 수신가능한 이메일 주소를 입력해주세요.</li>
-                                </td>
                         </tr>
                     </tbody>
                 </table>
