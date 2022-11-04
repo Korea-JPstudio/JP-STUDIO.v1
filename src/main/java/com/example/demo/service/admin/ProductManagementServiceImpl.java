@@ -63,10 +63,21 @@ public class ProductManagementServiceImpl implements ProductManagementService {
 
     @Override
     public void registerDtl(ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception {
-        if(productManagementRepository.saveProductDtl(productRegisterDtlReqDto.toEntity()) == 0) {
+        if (productManagementRepository.saveProductDtl(productRegisterDtlReqDto.toEntity()) == 0) {
             throw new CustomInternalServerErrorException("상품 등록 오류");
         }
     }
+    @Override
+    public void checkDuplicatedSize(ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception {
+        if(productManagementRepository.findProductSize(productRegisterDtlReqDto.toEntity()) > 0) {
+            Map<String, String> errorMap = new HashMap<String, String>();
+            errorMap.put("error", "이미 등록된 상품입니다.");
+            throw new CustomValidationException("Duplicated Error", errorMap);
+        }
+    }
+
+
+
 
     @Override
     public void registerImg(ProductImgReqDto productImgReqDto) throws Exception {

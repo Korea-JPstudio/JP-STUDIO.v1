@@ -56,6 +56,17 @@
        where
             pm.id = #{productId}
     </select>
+
+    <select id="findProductSize" parameterType="com.example.demo.domain.ProductDetail"  resultType="Integer">
+        select
+            count(*)
+        from
+            pdt_dtl
+        where
+            pdt_id = #{pdt_id}
+            and size_id = #{size_id}
+    </select>
+
     <insert id="saveProductDtl" parameterType="com.example.demo.domain.ProductDetail">
         insert into
             pdt_dtl

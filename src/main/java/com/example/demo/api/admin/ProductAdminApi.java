@@ -81,8 +81,9 @@ public class ProductAdminApi {
     @PostMapping("/product/dtl")
     public ResponseEntity<?> registerDtl(@RequestBody ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception{
 
+        productManagementService.checkDuplicatedSize(productRegisterDtlReqDto);
         productManagementService.registerDtl(productRegisterDtlReqDto);
-
+        
         return ResponseEntity.ok().body(new CMRespDto<>("Register Successfully", true));
 
     }

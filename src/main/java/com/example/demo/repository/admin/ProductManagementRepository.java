@@ -19,4 +19,5 @@ public interface ProductManagementRepository {
 
     public int saveProductImg(List<ProductImg> productImgs) throws Exception;
 
+    public int findProductSize(ProductDetail productDetail) throws Exception;
 }
