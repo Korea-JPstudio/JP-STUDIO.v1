@@ -45,5 +45,6 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void address(UserAddressReqDto userAddressReqDto) throws Exception {
         UserAddress userAddress = userAddressReqDto.toEntity();
+        accountRepository.saveUserAddress(userAddress);
     }
 }
