@@ -80,24 +80,32 @@ public class ProductManagementServiceImpl implements ProductManagementService {
 
         productImgReqDto.getFiles().forEach(file -> {
             Resource resource = resourceLoader.getResource("classpath:static/upload/product");
-            String filePath = null;
+            String targetFilePath = null;
+            String srcFilePath = null;
 
             //프로덕트까지 못찾으면
 
             try{
                 //해당경로에 이폴더가 존재하냐
                 if(!resource.exists()) {
-                    String tempPath = resourceLoader.getResource("classpath:static").getURI().toString();
-                    tempPath = tempPath.substring(tempPath.indexOf("/") + 1);
+                    String targetTempPath = resourceLoader.getResource("classpath:static").getURI().toString();
+                    String srcTempPath = resourceLoader.getResource("classpath:static").getURI().toString();
+                    targetTempPath = targetTempPath.substring(targetTempPath.indexOf("/") + 1);
+                    srcTempPath = srcTempPath.substring(srcTempPath.indexOf("/") + 1, srcTempPath.indexOf("target")) + "/src/main/resources/static";
 
-                    File f = new File(tempPath + "/upload/product");
+                    System.out.println(targetTempPath);
+                    System.out.println(srcTempPath);
+                    File f = new File(targetTempPath + "/upload/product");
+                    f.mkdirs();
+                    f = new File(srcTempPath + "/upload/product");
                     f.mkdirs();
                 }
 
-                filePath = resource.getURI().toString();
+                targetFilePath = resource.getURI().toString().substring(resource.getURI().toString().indexOf("/") + 1);
+                srcFilePath = resource.getURI().toString().substring(resource.getURI().toString().indexOf("/") + 1, resource.getURI().toString().indexOf("target")) + "/src/main/resources/static/upload/product";
+                System.out.println(targetFilePath);
+                System.out.println(srcFilePath);
 
-                filePath = filePath.substring(filePath.indexOf("/") + 1);
-                System.out.println(filePath);
             } catch (IOException e){
                 throw new RuntimeException(e);
             }
@@ -105,11 +113,13 @@ public class ProductManagementServiceImpl implements ProductManagementService {
             String originName = file.getOriginalFilename();
             String extension = originName.substring(originName.lastIndexOf("."));
             String saveName = UUID.randomUUID().toString().replace("-","") + extension;
-            Path path = Paths.get(filePath + "/" + saveName);
+            Path targetPath = Paths.get(targetFilePath + "/" + saveName);
+            Path srcPath = Paths.get(srcFilePath + "/" + saveName);
 
 
             try {
-                Files.write(path, file.getBytes());
+                Files.write(targetPath, file.getBytes());
+                Files.write(srcPath, file.getBytes());
 
             } catch (IOException e) {
                 throw new CustomInternalServerErrorException(e.getMessage());
