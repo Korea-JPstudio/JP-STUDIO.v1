@@ -43,12 +43,14 @@ public class AccountApi {
         return ResponseEntity.ok().body(new CMRespDto<>("유저 정보 가져오기", principalDetails != null ? principalDetails.getUser() : null));
     }
 
-    @PostMapping("/address")
-    public ResponseEntity<?> saveAddress(UserAddressReqDto userAddressReqDto) throws Exception {
+    @LogAspect
+    @PutMapping("/address")
+    public ResponseEntity<?> saveAddress(@RequestBody UserAddressReqDto userAddressReqDto) throws Exception {
 
+        System.out.println(userAddressReqDto);
         accountService.address(userAddressReqDto);
 
-        return ResponseEntity.created(null)
+        return ResponseEntity.ok()
                 .body(new CMRespDto<>("Register successfully", true));
     }
 
