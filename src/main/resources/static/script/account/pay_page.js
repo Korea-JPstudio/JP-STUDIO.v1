@@ -1,3 +1,29 @@
+const registerButton = document.querySelector(".address-button");
+
+registerButton.onclick = () => {
+    const postcodeInput = document.querySelector(".postcode").value;
+    const addressInput = document.querySelector(".address").value;
+    const detailAddressInput = document.querySelector(".detailAddress").value;
+
+    $.ajax({
+        async: false,
+        type : "post",
+        url : "/api/account/address",
+        dataType : "json",
+        success : response => {
+           alert("주소저장에 성공하였습니다.")
+        },
+        error : error => {
+            console.log(error);
+        }
+
+
+    });
+
+}
+
+
+
 class ImportApi {
     #IMP = null;
 
