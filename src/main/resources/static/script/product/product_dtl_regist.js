@@ -111,12 +111,14 @@ class Option {
   setProductMstSelectOptions() {
       const pdtMstSelect = document.querySelector(".product-select");
       const responseData = CommonApi.getInstance().getProductMstList();
+      
       if(responseData != null) {
           if(responseData.length > 0) {
+              pdtMstSelect.innerHTML = `<option value="none"> 상품을 선택하세요.</option>`;
               responseData.forEach(product => {
                   console.log(product)
                   pdtMstSelect.innerHTML += `
-                      <option value="${product.pdtId}">(${product.category})${product.pdtName}</option>
+                  <option value="${product.pdtId}">(${product.category})${product.pdtName}</option>
                   `;
               });
               this.addMstSelectEvent();

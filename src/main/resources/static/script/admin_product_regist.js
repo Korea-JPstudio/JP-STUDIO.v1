@@ -202,7 +202,7 @@ class RegisterService {
         const productCategoryList = commonApi.getCategoryList();
 
         const productCategory = document.querySelector(".product-category");
-        productCategory.innerHTML = `<option value="none">상품 종류</option>`;
+        productCategory.innerHTML = `<option value="none">카테고리를 선택하세요.</option>`;
 
         productCategoryList.forEach(category => {
             productCategory.innerHTML += `
