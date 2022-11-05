@@ -77,6 +77,12 @@ public class ProductAdminApi {
                 .body(new CMRespDto<>("get Successfully", productManagementService.getSizeList(productId)));
     }
 
+    @GetMapping("/option/products/size/{sizeId}")
+    public ResponseEntity<?> getDtlSizeList(@PathVariable int sizeId) throws Exception {
+        return ResponseEntity.ok()
+                .body(new CMRespDto<>("get Successfully", productManagementService.getSizeList(sizeId)));
+    }
+
     @PostMapping("/product/dtl")
     public ResponseEntity<?> registerDtl(@RequestBody ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception{
 
