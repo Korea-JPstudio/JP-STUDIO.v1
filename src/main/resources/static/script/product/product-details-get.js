@@ -1,76 +1,63 @@
-class CommonApi {
+class ProductDtlApi {
     static #instance = null;
-
     static getInstance() {
         if(this.#instance == null) {
-            this.#instance = new CommonApi();
+            this.#instance = new ProductDtlApi();
         }
         return this.#instance;
     }
-    
-    getProductMstList() {
+
+    getProductData() {
         let responseData = null;
-        $.ajax({
-            async: false,
-            type: "get",
-            url: "/api/admin/option/products/mst",
-            dataType: "json",
-            success: (response) => {
-                responseData = response.data;
-            },
-            error: (error) => {
-                console.log(error);
-            }
-        });
-        return responseData;
-    }
-  
-    getProductSizeList(productId) {
-        let responseData = null;
+        const url = location.href;
+        const pdtId = url.substring(url.lastIndexOf("/") + 1);
 
         $.ajax({
             async: false,
             type: "get",
             url: "/api/admin/option/products/size/" + productId,
             dataType: "json",
-            success: (response) => {
+            success: response => {
                 responseData = response.data;
             },
-            error: (error) => {
+            error: error => {
                 console.log(error);
             }
         });
+
         return responseData;
+
     }
 }
 
-class Option {
-    static #instance = null;
-    static getInstance() {
-        if(this.#instance == null) {
-            this.#instance = new Option();
-        }
-        return this.#instance;
-    }
-  
+class ProductDtlDetail {
+
     constructor() {
-        this.setSizeSelectOptions();
-    }
-  
-    setSizeSelectOptions() {
-        const pdtDtlSizeSelect = document.querySelector(".size-select");
-  
-        pdtDtlSizeSelect.innerHTML = "";
-        CommonApi.getInstance().getProductSizeList().forEach(size => {
-            pdtDtlSizeSelect.innerHTML += `
-                <option value="${size.sizeId}">${size.sizeName}</option>
-            `;
-        })
-
+    const responseData = ProductDtlApi.getInstance().getProductData();
+    this.loadProductSize(responseData);
     }
 
+    loadProductSize(responseData) {
+        const productSize = document.querySelector(".size-select");
+        productSize.innerHTML = ``;
+        console.log(responseData)
+
+        responseData.forEach(value => {
+            productSize.innerHTML += `<option value="${value.sizeId}">${value.sizeName}</option>`;
+        });
+    }
 }
-  
+   
+   
+//   addSizeSelectEvent(responseData) {
+//         const productColors = document.querySelector(".size-select");
+//         productSize.onchange = () => {
+//             this.loadProductSizes(responseData);
+//         }
+//     }
+
+// }
+
 window.onload = () => {
-    Option.getInstance();
+    new ProductDtlDetail();
 }
