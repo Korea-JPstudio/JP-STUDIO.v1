@@ -96,15 +96,36 @@ class Option {
     setProductPdtInfo(pdtName, pdtPrice) {
         const pdtDtlpdtName = document.querySelector(".pName");
         const pdtDtlPdtPrice = document.querySelector(".price-value");
+        const tablePdtName = document.querySelectorAll(".product-name");
+        const pdtPriceNum = document.querySelectorAll(".sum");
 
         pdtDtlpdtName.innerHTML = "";
         pdtDtlpdtName.innerHTML += `
             ${pdtName}
         `;
+
         pdtDtlPdtPrice.innerHTML = "";
         pdtDtlPdtPrice.innerHTML += `
             ${pdtPrice}
         `;
+
+        for(let i = 0; i < tablePdtName.length; i++){
+            tablePdtName[i].innerHTML = "";
+            tablePdtName[i].innerHTML += `
+                ${pdtName}
+            `;
+        }
+
+        for(let i = 0; i < pdtPriceNum.length; i++){
+            pdtPriceNum[i].innerHTML = "";
+            pdtPriceNum[i].innerHTML += `
+                ${pdtPrice}
+            `;
+        }
+
+
+        
+        
         
     }
 
