@@ -43,15 +43,5 @@ class ProductDetail {
         
     }
 
-    setSizeSelectOptions(responseData) {
-        const pdtDtlSizeSelect = document.querySelector(".size-select");
-  
-        pdtDtlSizeSelect.innerHTML = "";
-        Object.entries(responseData.pdtId).forEach(size => {
-            pdtDtlSizeSelect.innerHTML += `
-                <option value="${size.sizeId.value}">${size.sizeName.value}</option>
-            `;
-        })
-
-    }
+    
 }

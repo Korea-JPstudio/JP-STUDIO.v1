@@ -1,13 +1,18 @@
-class ProductDtlApi {
+class CommonApi {
     static #instance = null;
+
     static getInstance() {
         if(this.#instance == null) {
-            this.#instance = new ProductDtlApi();
+            this.#instance = new CommonApi();
         }
         return this.#instance;
     }
 
     getProductData() {
+
+    }
+    
+    getProductMstList() {
         let responseData = null;
         const url = location.href;
         const pdtId = url.substring(url.lastIndexOf("/") + 1);
@@ -15,49 +20,72 @@ class ProductDtlApi {
         $.ajax({
             async: false,
             type: "get",
-            url: "/api/admin/option/products/size/" + sizeId,
+            url: "/api/product/" + pdtId,
             dataType: "json",
-            success: response => {
+            success: (response) => {
                 responseData = response.data;
             },
-            error: error => {
+            error: (error) => {
                 console.log(error);
             }
         });
-
         return responseData;
-
     }
-}
+  
+    getProductSizeList(productId) {
+        let responseData = null;
 
-class ProductDtlDetail {
-
-    constructor() {
-    const responseData = ProductDtlApi.getInstance().getProductData();
-    this.loadProductSize(responseData);
-    }
-
-    loadProductSize(responseData) {
-        const productSize = document.querySelector(".size-select");
-        productSize.innerHTML = ``;
-        console.log(responseData)
-
-        responseData.forEach(value => {
-            productSize.innerHTML += `<option value="${value.sizeId}">${value.sizeName}</option>`;
+        $.ajax({
+            async: false,
+            type: "get",
+            url: "/api/admin/option/products/size/" + productId,
+            dataType: "json",
+            success: (response) => {
+                responseData = response.data;
+            },
+            error: (error) => {
+                console.log(error);
+            }
         });
+        return responseData;
     }
 }
-   
-   
-//   addSizeSelectEvent(responseData) {
-//         const productColors = document.querySelector(".size-select");
-//         productSize.onchange = () => {
-//             this.loadProductSizes(responseData);
-//         }
-//     }
 
-// }
+class Option {
+    static #instance = null;
+    static getInstance() {
+        if(this.#instance == null) {
+            this.#instance = new Option();
+        }
+        return this.#instance;
+    }
+  
+    constructor() {
+        this.getProductPdtId();
+    }
+  
+    getProductPdtId(){
+        const responseData = CommonApi.getInstance().getProductMstList();
 
+        this.setSizeSelectOptions(responseData.pdtId);
+
+        console.log(responseData.pdtId);
+    }
+
+    setSizeSelectOptions(productId) {
+        const pdtDtlSizeSelect = document.querySelector(".size-select");
+
+        pdtDtlSizeSelect.innerHTML = "";
+        CommonApi.getInstance().getProductSizeList(productId).forEach(size => {
+            pdtDtlSizeSelect.innerHTML += `
+                <option value="${size.sizeId}">${size.sizeName}</option>
+            `;
+        })
+
+    }
+
+}
+  
 window.onload = () => {
-    new ProductDtlDetail();
+    Option.getInstance();
 }
