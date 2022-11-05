@@ -88,15 +88,15 @@
                         <tr>
                             <th><label for="address">주소</label></th>
                             <td colspan="8">
-                                <input type="text" class="postcode" name="zipcode">
+                                <input type="text" class="postcode" name="zipcode" th:value="${address.address1}">
                                 <input type="button" id="search" value="zipcode" onclick="checkPost()">
                               
                                 <br>
                                 <input type="text" class="address" name="add1">
-                                <span class="txtinfo">기본주소</span>
+                                <span class="txtinfo" th:value="${address.address2}">기본주소</span>
                                 <br>
                                 <input type="text" class="detailAddress" name="add2">
-                                <span class="txtinfo">나머지주소</span>
+                                <span class="txtinfo" th:value="${address.address3}">나머지주소</span>
                                 <br><br>
                                 <button type="button" class="address-button">주소저장</button>
 
