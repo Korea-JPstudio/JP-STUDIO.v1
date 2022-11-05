@@ -7,6 +7,8 @@ class CommonApi {
         }
         return this.#instance;
     }
+
+   
     
     getProductMstList() {
         let responseData = null;
@@ -28,61 +30,108 @@ class CommonApi {
         return responseData;
     }
   
-    // getProductSizeList(productId) {
-    //     let responseData = null;
+    getProductSizeList(productId) {
+        let responseData = null;
 
-    //     $.ajax({
-    //         async: false,
-    //         type: "get",
-    //         url: "/api/admin/option/products/size/" + productId,
-    //         dataType: "json",
-    //         success: (response) => {
-    //             responseData = response.data;
-    //         },
-    //         error: (error) => {
-    //             console.log(error);
-    //         }
-    //     });
-    //     return responseData;
-    // }
+        $.ajax({
+            async: false,
+            type: "get",
+            url: "/api/admin/option/products/size/" + productId,
+            dataType: "json",
+            success: (response) => {
+                responseData = response.data;
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
+        return responseData;
+    }
 }
 
 class Option {
-    // static #instance = null;
-    // static getInstance() {
-    //     if(this.#instance == null) {
-    //         this.#instance = new Option();
-    //     }
-    //     return this.#instance;
-    // }
-  
-    constructor() {
-        const responseData = CommonApi.getInstance().getProductMstList();
-        this.setSizeSelectOptions(responseData);
-        console.log(responseData);
+    static #instance = null;
+    static getInstance() {
+        if(this.#instance == null) {
+            this.#instance = new Option();
+        }
+        return this.#instance;
     }
   
-    // getProductPdtId(){
-    //    // const responseData = CommonApi.getInstance().getProductMstList();
-    //     console.log(responseData.pdtSizes)
-        
+    constructor() {
+        this.getProductPdtId();
+        this.getProductPdtName();
+    }
+  
+    getProductPdtId(){
+        const responseData = CommonApi.getInstance().getProductMstList();
 
-    // }
+        this.setSizeSelectOptions(responseData.pdtId);
 
-    setSizeSelectOptions(responseData) {
+        console.log(responseData.pdtId);
+    }
+    
+    setSizeSelectOptions(productId) {
         const pdtDtlSizeSelect = document.querySelector(".size-select");
-       
+
         pdtDtlSizeSelect.innerHTML = "";
-        responseData.pdtSizes.forEach(value => {
+        CommonApi.getInstance().getProductSizeList(productId).forEach(size => {
             pdtDtlSizeSelect.innerHTML += `
-                <option value="${value.pdtDtlId}">${value.sizeName}</option>
+                <option value="${size.sizeId}">${size.sizeName}</option>
             `;
         })
 
     }
 
+    getProductPdtName() {
+        const responseData = CommonApi.getInstance().getProductMstList();
+
+        this.setProductPdtInfo(responseData.pdtName, responseData.pdtPrice);
+
+        console.log(responseData.pdtName);
+        console.log(responseData.pdtPrice);
+
+    }   
+
+    setProductPdtInfo(pdtName, pdtPrice) {
+        const pdtDtlpdtName = document.querySelector(".pName");
+        const pdtDtlPdtPrice = document.querySelector(".price-value");
+        const tablePdtName = document.querySelectorAll(".product-name");
+        const pdtPriceNum = document.querySelectorAll(".sum");
+
+        pdtDtlpdtName.innerHTML = "";
+        pdtDtlpdtName.innerHTML += `
+            ${pdtName}
+        `;
+
+        pdtDtlPdtPrice.innerHTML = "";
+        pdtDtlPdtPrice.innerHTML += `
+            ${pdtPrice}
+        `;
+
+        for(let i = 0; i < tablePdtName.length; i++){
+            tablePdtName[i].innerHTML = "";
+            tablePdtName[i].innerHTML += `
+                ${pdtName}
+            `;
+        }
+
+        for(let i = 0; i < pdtPriceNum.length; i++){
+            pdtPriceNum[i].innerHTML = "";
+            pdtPriceNum[i].innerHTML += `
+                ${pdtPrice}
+            `;
+        }
+
+
+        
+        
+        
+    }
+
+
 }
   
 window.onload = () => {
-    new Option();
+    Option.getInstance();
 }

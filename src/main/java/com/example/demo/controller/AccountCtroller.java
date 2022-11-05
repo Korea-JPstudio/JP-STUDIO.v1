@@ -46,16 +46,16 @@ public class AccountCtroller {
 
     @GetMapping("/account/order")
     public String loadPayment(Model model,
-                             @RequestParam int size,
+//                             @RequestParam int pdtDtlId,
 //                              userid가져와주세요.. acocunt repository service, impl , domain , 수정했음
                               @AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception {
 //
-       CheckoutRespDto checkoutRespDto = accountService.getPaymentProduct(size);
-       model.addAttribute("data", checkoutRespDto);
+//       CheckoutRespDto checkoutRespDto = productService.getCheckoutProduct(pdtDtlId);
+//       model.addAttribute("data", checkoutRespDto);
 
 //        UserAddressReqDto userAddressReqDto = accountService.getUserAddress(getUser());
-
-        model.addAttribute("user", principalDetails.getUser());
+//
+//        model.addAttribute("user", principalDetails.getUser());
 //        model.addAttribute("address", userAddressReqDto);
 
         return "account/pay_page";

@@ -15,8 +15,7 @@ totalPrice = totalPriceValue;
 let price = document.querySelector(".price-value").innerHTML;
 price = Number(price);
 
-let sum = 0;
-Number(sum);
+
 
 const XL = document.querySelector(".XL")
 const L = document.querySelector(".L")
@@ -26,43 +25,47 @@ const XS = document.querySelector(".XS")
 let pdtPrice = document.querySelectorAll(".pdt-price-td");
 
 
-for(let i = 0; i<productName.length; i++) {
+for(let i = 0; i < productName.length; i++) {
     productName[i].innerHTML = pName;
 }
 
 for(let i = 0 ; i< pdtPrice.length; i++) {
     pdtPrice[i].innerHTML += `
-        ₩${price}
+        ₩<span class="sum">${price}</span>
     `
 }
 
 size.onchange = () => {
     let pdt_size = size.options[size.selectedIndex].value;
+
     console.log(pdt_size);
 
-    if(pdt_size == 'XL'){
+    if(pdt_size == '4'){
         XL.style.display = 'table-row';
     }
-    else if(pdt_size == 'L'){
+    else if(pdt_size == '3'){
         L.style.display = 'table-row';
     }
-    else if(pdt_size == 'M'){
+    else if(pdt_size == '2'){
         M.style.display = 'table-row';
     }
-    else if(pdt_size == 'S'){
+    else if(pdt_size == '1'){
         S.style.display = 'table-row';
     }
-    else if(pdt_size == 'XS'){
-        XS.style.display = 'table-row';
-    }
-}
+
     
+}
 
 
 plus_btns[0].onclick = () => {
+    let sum = 0;
+    Number(sum);
+
     counts[0].value++;
 
     sum = price * counts[0].value;
+
+    console.log(sum);
 
     pdtPrice[0].innerHTML = ``;
     pdtPrice[0].innerHTML += `
@@ -152,30 +155,6 @@ minus_btns[3].onclick = () => {
         ₩${price * counts[3].value}
     `;
 }
-
-plus_btns[4].onclick = () => {
-    counts[4].value++;
-
-    pdtPrice[4].innerHTML = ``;
-    pdtPrice[4].innerHTML += `
-        ₩${price * counts[4].value}
-    `;
-}
-minus_btns[4].onclick = () => {
-    if(counts[4].value == 0){
-        return 0;
-    }else{
-        counts[4].value--;
-    }
-
-    pdtPrice[4].innerHTML = ``;
-    pdtPrice[4].innerHTML += `
-        ₩${price * counts[4].value}
-    `;
-}
-
-
-
 
 
 for(let i = 0; i<pdtPrice.length; i++){
