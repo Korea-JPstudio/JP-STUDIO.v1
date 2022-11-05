@@ -22,11 +22,19 @@ public class CollectionsController {
     }
 
     @GetMapping("/product/{pdtId}")
-    public String loadProductDetail(@PathVariable String pdtId) {
+    public String loadProductDetail(@PathVariable int pdtId) {
         return "product/product_detail";
     }
 
-
+//    @GetMapping("/checkout")
+//    public String loadPayment(Model model,
+//                              @RequestParam int pdtId
+//                              ) throws Exception{  //pdtDtlId = color - size 조합
+//        CheckoutRespDto checkoutRespDto =  productService.getCheckoutProduct(pdtId);
+//        model.addAttribute("data", checkoutRespDto);
+//
+//        return "product/product_order";
+//    }
 
 
 }

@@ -23,7 +23,6 @@ import java.util.*;
 @RequiredArgsConstructor
 public class ProductManagementServiceImpl implements ProductManagementService {
 
-
     private final ResourceLoader resourceLoader;
     private final ProductManagementRepository productManagementRepository;
 
@@ -52,20 +51,10 @@ public class ProductManagementServiceImpl implements ProductManagementService {
     }
 
     @Override
-    public List<ProductSizeOptionRespDto> getSizeList(int productId) throws Exception {
+    public List<?> getSizeList(int productId) throws Exception {
         List<ProductSizeOptionRespDto> list = new ArrayList<ProductSizeOptionRespDto>();
 
         productManagementRepository.getSizeList(productId).forEach(size ->{
-            list.add(size.toDto());
-        });
-        return list;
-    }
-
-    @Override
-    public List<?> getDtlSizeList(int sizeId) throws Exception {
-        List<ProductSizeOptionRespDto> list = new ArrayList<ProductSizeOptionRespDto>();
-
-        productManagementRepository.getDtlSizeList(sizeId).forEach(size ->{
             list.add(size.toDto());
         });
         return list;

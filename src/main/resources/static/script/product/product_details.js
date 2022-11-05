@@ -188,9 +188,6 @@ totalPrice.innerHTML += `
 `;
 
 
-
-
-
 class ProductApi {
     static #instance = null;
     static getInstance() {

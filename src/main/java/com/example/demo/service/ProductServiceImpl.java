@@ -73,11 +73,7 @@ public class ProductServiceImpl implements ProductService {
 
         return  dto;
     }
-    @Override
-    public CheckoutRespDto getCheckoutProduct(int pdtDtlId) throws Exception {
-        return productRepository.getPaymentProduct(pdtDtlId).toDto();
 
-    }
 }
 
 
