@@ -47,4 +47,9 @@ public class AccountServiceImpl implements AccountService {
         UserAddress userAddress = userAddressReqDto.toEntity();
         accountRepository.saveUserAddress(userAddress);
     }
+
+    @Override
+    public UserAddressReqDto getUserAddress(int userId) throws Exception {
+        return accountRepository.getUserAddress(String.valueOf(userId)).toDto();
+    }
 }

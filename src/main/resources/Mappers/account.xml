@@ -55,6 +55,16 @@
         where
             um.username = #{username}
     </select>
+    <select id="getUserAddress" resultType="com.example.demo.domain.UserAddress">
+        SELECT
+            ud.address1,
+            ud.address2,
+            ud.address3
+        FROM
+            user_dtl ud
+        WHERE
+            id = #{id}
+    </select>
 
     <insert id = "saveUser" parameterType="com.example.demo.domain.User">
         insert into

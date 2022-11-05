@@ -7,4 +7,5 @@ public interface AccountService {
     public void duplicateEmail(SignUpDto signUpDto) throws Exception;
     public void register(SignUpDto signUpDto) throws Exception;
     public void address(UserAddressReqDto userAddressReqDto) throws Exception;
+    public UserAddressReqDto getUserAddress(int userId) throws Exception;
 }

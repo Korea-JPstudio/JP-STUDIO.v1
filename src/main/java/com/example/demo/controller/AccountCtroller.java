@@ -2,7 +2,9 @@ package com.example.demo.controller;
 
 
 import com.example.demo.dto.CheckoutRespDto;
+import com.example.demo.dto.UserAddressReqDto;
 import com.example.demo.securiry.PrincipalDetails;
+import com.example.demo.service.AccountService;
 import com.example.demo.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 //모델과 뷰를 반환받기위해. 컨트롤러를 사용함.
@@ -22,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AccountCtroller {
 
     private final ProductService productService;
+    private final AccountService accountService;
 
     @GetMapping("/main")
     public String loadMain() {
@@ -43,10 +47,14 @@ public class AccountCtroller {
     @GetMapping("/account/order")
     public String loadPayment(Model model,
                               //@RequestParam int pdtDtlId,
+//                              userid가져와주세요.. acocunt repository service, impl , domain , 수정했음
                               @AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception {
         //CheckoutRespDto checkoutRespDto = productService.getCheckoutProduct(pdtDtlId);
        //model.addAttribute("data", checkoutRespDto);
+
+//        UserAddressReqDto userAddressReqDto =accountService.getUserAddress(userId);
         model.addAttribute("user", principalDetails.getUser());
+//        model.addAttribute("address", userAddressReqDto);
 
         return "account/pay_page";
     }
