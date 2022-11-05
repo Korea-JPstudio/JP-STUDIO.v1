@@ -30,70 +30,59 @@ class CommonApi {
         return responseData;
     }
   
-    getProductSizeList(productId) {
-        let responseData = null;
+    // getProductSizeList(productId) {
+    //     let responseData = null;
 
-        $.ajax({
-            async: false,
-            type: "get",
-            url: "/api/admin/option/products/size/" + productId,
-            dataType: "json",
-            success: (response) => {
-                responseData = response.data;
-            },
-            error: (error) => {
-                console.log(error);
-            }
-        });
-        return responseData;
-    }
+    //     $.ajax({
+    //         async: false,
+    //         type: "get",
+    //         url: "/api/admin/option/products/size/" + productId,
+    //         dataType: "json",
+    //         success: (response) => {
+    //             responseData = response.data;
+    //         },
+    //         error: (error) => {
+    //             console.log(error);
+    //         }
+    //     });
+    //     return responseData;
+    // }
 }
 
 class Option {
-    static #instance = null;
-    static getInstance() {
-        if(this.#instance == null) {
-            this.#instance = new Option();
-        }
-        return this.#instance;
-    }
+    // static #instance = null;
+    // static getInstance() {
+    //     if(this.#instance == null) {
+    //         this.#instance = new Option();
+    //     }
+    //     return this.#instance;
+    // }
   
     constructor() {
         this.getProductPdtId();
-        this.getProductPdtName();
     }
   
     getProductPdtId(){
         const responseData = CommonApi.getInstance().getProductMstList();
+        this.setSizeSelectOptions(responseData);
+        this.setProductPdtName(responseData)
+        console.log(responseData);
 
-        this.setSizeSelectOptions(responseData.pdtId);
-
-        console.log(responseData.pdtId);
     }
     
-    setSizeSelectOptions(productId) {
+    setSizeSelectOptions(responseData) {
         const pdtDtlSizeSelect = document.querySelector(".size-select");
 
         pdtDtlSizeSelect.innerHTML = "";
-        CommonApi.getInstance().getProductSizeList(productId).forEach(size => {
+        responseData.pdtSizes.forEach(value => {
             pdtDtlSizeSelect.innerHTML += `
-                <option value="${size.sizeId}">${size.sizeName}</option>
+                <option value="${value.sizeId}">${value.sizeName}</option>
             `;
         })
 
     }
 
-    getProductPdtName() {
-        const responseData = CommonApi.getInstance().getProductMstList();
-
-        this.setProductPdtInfo(responseData.pdtName, responseData.pdtPrice);
-
-        console.log(responseData.pdtName);
-        console.log(responseData.pdtPrice);
-
-    }   
-
-    setProductPdtInfo(pdtName, pdtPrice) {
+    setProductPdtName(responseData) {
         const pdtDtlpdtName = document.querySelector(".pName");
         const pdtDtlPdtPrice = document.querySelector(".price-value");
         const tablePdtName = document.querySelectorAll(".product-name");
@@ -101,37 +90,49 @@ class Option {
 
         pdtDtlpdtName.innerHTML = "";
         pdtDtlpdtName.innerHTML += `
-            ${pdtName}
+        ${responseData.pdtName}
         `;
 
+        
         pdtDtlPdtPrice.innerHTML = "";
         pdtDtlPdtPrice.innerHTML += `
-            ${pdtPrice}
+        ${responseData.pdtPrice}
         `;
 
+    
         for(let i = 0; i < tablePdtName.length; i++){
             tablePdtName[i].innerHTML = "";
             tablePdtName[i].innerHTML += `
-                ${pdtName}
+                ${responseData.pdtName}
             `;
         }
 
         for(let i = 0; i < pdtPriceNum.length; i++){
             pdtPriceNum[i].innerHTML = "";
             pdtPriceNum[i].innerHTML += `
-                ${pdtPrice}
+                ${responseData.pdtPrice}
             `;
         }
 
+}   
+
+
+
+  
+
+ 
+
+
+
 
         
         
         
-    }
+    // }
 
 
 }
   
 window.onload = () => {
-    Option.getInstance();
+    new Option();
 }
