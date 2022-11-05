@@ -45,8 +45,10 @@ public class ProductServiceImpl implements ProductService {
             throw new CustomValidationException("GetProduct Error",errormap);
         }
 
-        Map<String, List<Map<String,Object>>> pdtColors = new HashMap<String, List<Map<String,Object>>>();
+
+        List<Map<String, Object>> pdtSizes = new ArrayList<Map<String, Object>>();
         List<String> pdtImgs = new ArrayList<String>();
+
 
         product.getPdt_dtls().forEach(dtl -> {
             //맵완성
@@ -57,6 +59,7 @@ public class ProductServiceImpl implements ProductService {
             pdtDtlIdAndSize.put("sizeName", dtl.getSize_name());
             pdtDtlIdAndSize.put("pdtStock", dtl.getPdt_stock());
 
+            pdtSizes.add(pdtDtlIdAndSize);
         });
 
         product.getPdt_imgs().forEach(img -> {
@@ -69,6 +72,7 @@ public class ProductServiceImpl implements ProductService {
                 .pdtName(product.getPdt_name())
                 .pdtPrice(product.getPdt_price())
                 .pdtImgs(pdtImgs)
+                .pdtSizes(pdtSizes)
                 .build();
 
         return  dto;

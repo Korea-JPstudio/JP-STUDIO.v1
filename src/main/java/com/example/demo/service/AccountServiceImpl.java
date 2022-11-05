@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.User;
 import com.example.demo.domain.UserAddress;
+import com.example.demo.dto.CheckoutRespDto;
 import com.example.demo.dto.SignUpDto;
 import com.example.demo.dto.UserAddressReqDto;
 import com.example.demo.exception.CustomInternalServerErrorException;
@@ -51,5 +52,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public UserAddressReqDto getUserAddress(int userId) throws Exception {
         return accountRepository.getUserAddress(userId).toDto();
+    }
+
+    @Override
+    public CheckoutRespDto getPaymentProduct(int pdtDtlId) throws Exception {
+        return accountRepository.getPaymentProduct(pdtDtlId).toDto();
     }
 }
