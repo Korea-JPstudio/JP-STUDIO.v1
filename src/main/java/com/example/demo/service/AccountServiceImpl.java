@@ -50,6 +50,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public UserAddressReqDto getUserAddress(int userId) throws Exception {
-        return accountRepository.getUserAddress(String.valueOf(userId)).toDto();
+        return accountRepository.getUserAddress(userId).toDto();
     }
 }
