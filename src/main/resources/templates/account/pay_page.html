@@ -37,8 +37,8 @@
                     </td>
                     <td class="option-box">   
                     <p class="name">
-                        <a href="http://draw-fit.com/product/corduroy-wes-shirt-navy/1975/category/49/
-                        " class="product-name">CORDUROY WES SHIRT [NAVY]</a><p>
+                        <a href="http://draw-fit.com/product/corduroy-wes-shirt-navy/1975/category/49/" 
+                            class="product-name" ></a><p>
                         <span class="option">[옵션:L]</span>
                     </td>
                     <th>74,000원</th>
@@ -83,20 +83,20 @@
                     <tbody>
                         <tr>
                             <th><label for="customer">주문하시는 분</label></th>
-                            <td colspan="8"><input type="text" id="customer" name="customer" th:value="${user.name}" required></td>
+                            <td colspan="8"><input type="text" class="customer" name="customer" th:value="${user.name}" required></td>
                         </tr>
                         <tr>
                             <th><label for="address">주소</label></th>
                             <td colspan="8">
-                                <input type="text" class="postcode" name="zipcode" th:value="${address.address1}">
+                                <input type="text" class="postcode" name="zipcode">
                                 <input type="button" id="search" value="zipcode" onclick="checkPost()">
                               
                                 <br>
                                 <input type="text" class="address" name="add1">
-                                <span class="txtinfo" th:value="${address.address2}">기본주소</span>
+                                <span class="txtinfo" >기본주소</span>
                                 <br>
                                 <input type="text" class="detailAddress" name="add2">
-                                <span class="txtinfo" th:value="${address.address3}">나머지주소</span>
+                                <span class="txtinfo">나머지주소</span>
                                 <br><br>
                                 <button type="button" class="address-button">주소저장</button>
 
@@ -130,16 +130,16 @@
                                 <th><label for="delivery">배송지 선택</label></th>
                                     <td colspan="8">
                                         <div class="address">
-                                            <input id="sameaddr" name="sameaddr" type="radio">
+                                            <input class="sameaddr" name="sameaddr" type="radio">
                                             <label for="sameaddr">주문자 정보와 동일</label>
-                                            <input id="sameaddr" name="sameaddr" type="radio">
+                                            <input class="sameaddr1" name="sameaddr" type="radio">
                                             <label for="sameaddr">새로운 배송지</label>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th><label for="customer">받으시는 분</label></th>
-                                    <td colspan="8"><input type="text" id="customer" name="customer"required></td>
+                                    <td colspan="8"><input type="text" class="customer1" name="customer" required></td>
                                 </tr>
                                 <tr>
                                     <th><label for="address">주소</label></th>

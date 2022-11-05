@@ -102,10 +102,9 @@ tfoot button {
     flex-direction: left;
 
 
-
 }
 
-#customer {
+.customer, .customer1 {
     padding:5px;
     width:200px;
 }
