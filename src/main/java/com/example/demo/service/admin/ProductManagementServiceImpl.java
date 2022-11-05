@@ -52,7 +52,7 @@ public class ProductManagementServiceImpl implements ProductManagementService {
     }
 
     @Override
-    public List<?> getSizeList(int productId) throws Exception {
+    public List<ProductSizeOptionRespDto> getSizeList(int productId) throws Exception {
         List<ProductSizeOptionRespDto> list = new ArrayList<ProductSizeOptionRespDto>();
 
         productManagementRepository.getSizeList(productId).forEach(size ->{

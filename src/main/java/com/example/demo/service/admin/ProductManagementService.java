@@ -10,7 +10,7 @@ public interface ProductManagementService {
     public List<ProductMstOptionRespDto> getProductMstList() throws Exception;
     public void registerMst(ProductRegisterReqDto productRegisterReqDto) throws Exception;
 
-    public List<?> getSizeList(int productId) throws Exception;
+    public List<ProductSizeOptionRespDto> getSizeList(int productId) throws Exception;
 
     public void registerDtl(ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception;
 
