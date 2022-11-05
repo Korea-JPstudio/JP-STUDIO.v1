@@ -8,9 +8,7 @@ class CommonApi {
         return this.#instance;
     }
 
-    getProductData() {
-
-    }
+   
     
     getProductMstList() {
         let responseData = null;
@@ -62,6 +60,7 @@ class Option {
   
     constructor() {
         this.getProductPdtId();
+        this.getProductPdtName();
     }
   
     getProductPdtId(){
@@ -71,7 +70,7 @@ class Option {
 
         console.log(responseData.pdtId);
     }
-
+    
     setSizeSelectOptions(productId) {
         const pdtDtlSizeSelect = document.querySelector(".size-select");
 
@@ -83,6 +82,32 @@ class Option {
         })
 
     }
+
+    getProductPdtName() {
+        const responseData = CommonApi.getInstance().getProductMstList();
+
+        this.setProductPdtInfo(responseData.pdtName, responseData.pdtPrice);
+
+        console.log(responseData.pdtName);
+        console.log(responseData.pdtPrice);
+
+    }   
+
+    setProductPdtInfo(pdtName, pdtPrice) {
+        const pdtDtlpdtName = document.querySelector(".pName");
+        const pdtDtlPdtPrice = document.querySelector(".price-value");
+
+        pdtDtlpdtName.innerHTML = "";
+        pdtDtlpdtName.innerHTML += `
+            ${pdtName}
+        `;
+        pdtDtlPdtPrice.innerHTML = "";
+        pdtDtlPdtPrice.innerHTML += `
+            ${pdtPrice}
+        `;
+        
+    }
+
 
 }
   

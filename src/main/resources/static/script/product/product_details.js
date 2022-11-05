@@ -174,9 +174,7 @@ minus_btns[4].onclick = () => {
     `;
 }
 
-
-
-
+ 
 
 for(let i = 0; i<pdtPrice.length; i++){
     sum += Number(pdtPrice[i].innerHTML);
