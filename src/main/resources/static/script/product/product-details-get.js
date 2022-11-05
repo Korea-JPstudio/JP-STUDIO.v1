@@ -31,7 +31,7 @@ class CommonApi {
         $.ajax({
             async: false,
             type: "get",
-            url: "/api/admin/option/products/size/" + productId,
+            url: "/api/admin/option/products/size/" + sizeId,
             dataType: "json",
             success: (response) => {
                 responseData = response.data;
