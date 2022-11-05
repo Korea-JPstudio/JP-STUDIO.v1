@@ -53,10 +53,10 @@ public class AccountCtroller {
 //       CheckoutRespDto checkoutRespDto = productService.getCheckoutProduct(pdtDtlId);
 //       model.addAttribute("data", checkoutRespDto);
 
-        UserAddressReqDto userAddressReqDto = accountService.getUserAddress(getUser());
-
-        model.addAttribute("user", principalDetails.getUser());
-        model.addAttribute("address", userAddressReqDto);
+//        UserAddressReqDto userAddressReqDto = accountService.getUserAddress(getUser());
+//
+//        model.addAttribute("user", principalDetails.getUser());
+//        model.addAttribute("address", userAddressReqDto);
 
         return "account/pay_page";
     }

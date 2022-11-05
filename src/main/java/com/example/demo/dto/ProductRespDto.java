@@ -16,5 +16,6 @@ public class ProductRespDto {
     private String pdtName;
     private int pdtPrice;
     private List<String> pdtImgs;
+    private List<Map<String, Object>> pdtSizes;
 
 }

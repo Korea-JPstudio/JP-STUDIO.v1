@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.domain.PaymentProduct;
 import com.example.demo.domain.User;
 import com.example.demo.domain.UserAddress;
 import org.apache.ibatis.annotations.Mapper;
@@ -10,5 +11,6 @@ public interface AccountRepository {
     public int saveUser(User user) throws Exception;
     public int saveUserAddress(UserAddress userAddress) throws Exception;
     public UserAddress getUserAddress(int userId) throws Exception;
+    public PaymentProduct getPaymentProduct(int pdtDtlId) throws Exception;
 
 }
