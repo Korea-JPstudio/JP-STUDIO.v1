@@ -143,6 +143,7 @@ class CollectionsService {
         collectionProducts.innerHTML = ``;
 
         responseData.forEach(product => {
+            this.pdtIdList.push(product.productId);
             collectionProducts.innerHTML += `
             <li class="collection-product">
                 <div class="product-img">
@@ -156,10 +157,23 @@ class CollectionsService {
                 </div>
             </li>
             `;
+        });
+        this.addProductListEvent();
+    }
+
+    addProductListEvent(){
+        const collectionProducts = document.querySelectorAll(".collection-product");
+
+        collectionProducts.forEach((product, index) => {
+            product.onclick =() => {
+                location.href ="/product/" + this.pdtIdList[index];
+
+            }
         })
     }
 }
 
 window.onload = () => {
     CollectionsService.getInstance().loadCollections();
+    CollectionsApi.getInstance().addPageButtonEvent();
 }
