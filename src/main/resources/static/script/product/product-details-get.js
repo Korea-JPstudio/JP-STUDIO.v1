@@ -87,48 +87,192 @@ class Option {
         const pdtDtlPdtPrice = document.querySelector(".price-value");
         const tablePdtName = document.querySelectorAll(".product-name");
         const pdtPriceNum = document.querySelectorAll(".sum");
+        const counts = document.querySelectorAll(".input1");
+        const totalPrice = document.querySelector(".totalPrice");
+        const plus_btns = document.querySelectorAll(".plus");
+        const minus_btns = document.querySelectorAll(".minus");
 
         pdtDtlpdtName.innerHTML = "";
         pdtDtlpdtName.innerHTML += `
-        ${responseData.pdtName}
+            ${responseData.pdtName}
         `;
 
         
         pdtDtlPdtPrice.innerHTML = "";
         pdtDtlPdtPrice.innerHTML += `
-        ${responseData.pdtPrice}
+            ${responseData.pdtPrice}
         `;
 
     
-        for(let i = 0; i < tablePdtName.length; i++){
+        for(let i = 0; i < tablePdtName.length; i++) {
             tablePdtName[i].innerHTML = "";
             tablePdtName[i].innerHTML += `
                 ${responseData.pdtName}
             `;
         }
 
-        for(let i = 0; i < pdtPriceNum.length; i++){
+        for(let i = 0; i < pdtPriceNum.length; i++) {
             pdtPriceNum[i].innerHTML = "";
             pdtPriceNum[i].innerHTML += `
                 ${responseData.pdtPrice}
             `;
         }
 
-}   
+        for(let i = 0; i < pdtPriceNum.length; i++) {
+            totalPrice.innerHTML = "";
+            totalPrice.innerHTML += `
+                ${responseData.pdtPrice * counts[i].value}
+            `;
+        }totalPrice.innerHTML = `${responseData.pdtPrice}`;
 
+        plus_btns[0].onclick = () => {
+           
 
+            counts[0].value++;
+            
+            pdtPrice[0].innerHTML = ``;
+            pdtPrice[0].innerHTML += `
+            ₩<span class="sum">${responseData.pdtPrice * counts[0].value}</span>
+            `;
 
-  
+            for(let i=0; i<pdtPriceNum.length; i++){
+                let totalSum = 0;
 
- 
+                totalSum += pdtPriceNum[i].value;
+                Number(totalSum);
+                totalPrice.innerHTML = ``;
+                totalPrice.innerHTML += `
+                    ${totalSum}
+                `;
 
+            }
 
+            // totalPrice.innerHTML = ``;
+            // totalPrice.innerHTML += `
+            //     ${responseData.pdtPrice * counts[0].value}
+            // `;
+        }
 
+        minus_btns[0].onclick = () => {
 
+            if(counts[0].value == 0){
+                return 0;
+            }else{
+                counts[0].value--;
+            }
         
+            pdtPrice[0].innerHTML = ``;
+            pdtPrice[0].innerHTML += `
+            ₩<span class="sum">${responseData.pdtPrice * counts[0].value}</span>
+            `;
         
+            totalPrice.innerHTML = ``;
+            totalPrice.innerHTML += `
+                ${responseData.pdtPrice * counts[0].value}
+            `;
+        }
+
+        plus_btns[1].onclick = () => {
+            counts[1].value++;
         
-    // }
+            pdtPrice[1].innerHTML = ``;
+            pdtPrice[1].innerHTML += `
+            ₩<span class="sum">${responseData.pdtPrice * counts[1].value}</span>
+            `;
+
+            totalPrice.innerHTML = ``;
+            totalPrice.innerHTML += `
+                ${responseData.pdtPrice * counts[1].value}
+            `;
+        }
+        
+        minus_btns[1].onclick = () => {
+
+            if(counts[1].value == 0){
+                return 0;
+            }else{
+                counts[1].value--;
+            }
+        
+            pdtPrice[1].innerHTML = ``;
+            pdtPrice[1].innerHTML += `
+            ₩<span class="sum">${responseData.pdtPrice * counts[1].value}</span>
+            `;
+        
+            totalPrice.innerHTML = ``;
+            totalPrice.innerHTML += `
+                ${responseData.pdtPrice * counts[1].value}
+            `;
+        }
+
+        plus_btns[2].onclick = () => {
+            counts[2].value++;
+        
+            
+            pdtPrice[2].innerHTML = ``;
+            pdtPrice[2].innerHTML += `
+            ₩<span class="sum">${responseData.pdtPrice * counts[2].value}</span>
+            `;
+
+            totalPrice.innerHTML = ``;
+            totalPrice.innerHTML += `
+                ${responseData.pdtPrice * counts[2].value}
+            `;
+        }
+        
+        minus_btns[2].onclick = () => {
+
+            if(counts[2].value == 0){
+                return 0;
+            }else{
+                counts[2].value--;
+            }
+        
+            pdtPrice[2].innerHTML = ``;
+            pdtPrice[2].innerHTML += `
+            ₩<span class="sum">${responseData.pdtPrice * counts[2].value}</span>
+            `;
+        
+            totalPrice.innerHTML = ``;
+            totalPrice.innerHTML += `
+                ${responseData.pdtPrice * counts[2].value}
+            `;
+        }
+        plus_btns[3].onclick = () => {
+            counts[3].value++;
+        
+            
+            pdtPrice[3].innerHTML = ``;
+            pdtPrice[3].innerHTML += `
+            ₩<span class="sum">${responseData.pdtPrice * counts[3].value}</span>
+            `;
+
+            totalPrice.innerHTML = ``;
+            totalPrice.innerHTML += `
+                ${responseData.pdtPrice * counts[3].value}
+            `;
+        }
+        
+        minus_btns[3].onclick = () => {
+
+            if(counts[3].value == 0){
+                return 0;
+            }else{
+                counts[3].value--;
+            }
+        
+            pdtPrice[3].innerHTML = ``;
+            pdtPrice[3].innerHTML += `
+            ₩<span class="sum">${responseData.pdtPrice * counts[3].value}</span>
+            `;
+        
+            totalPrice.innerHTML = ``;
+            totalPrice.innerHTML += `
+                ${responseData.pdtPrice * counts[3].value}
+            `;
+        }
+
+    }   
 
 
 }
