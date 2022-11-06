@@ -31,7 +31,12 @@ html, body {
 }
 
 .img-box{
-    padding:15px 0px 14px; 
+    padding: 15px 0px 14px;
+    width: 80px;
+}
+
+.img-box img {
+    width: 100%;
 }
 
 table{

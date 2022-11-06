@@ -4,6 +4,8 @@
 <head>
 <link rel="stylesheet" href="/static/CSS/Main1.css">
 <link rel="stylesheet" href="/static/CSS/pay_page.css">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 </head>
 <body>
     <div id="container">
@@ -31,18 +33,21 @@
                     <tr>
                     <td class="check"><input type="checkbox"></td>
                     <td class="img-box">
-                        <a href="http://draw-fit.com/product/detail.html?product_no=1975&cate_no=49">
                         <img th:src="|/static/upload/product/${data.saveName}|"></a>
                     </td>
-                    <td class="option-box">   
-                    <div th:text="${data.pdtName}"></div>
+                    <td>   
+                    <div class="product-name" th:text="${data.pdtName}"></div>
                         <span class="option" th:text="|옵션: [ ${data.sizeName} ]|"></span>
                     </td>
-                    <th th:text="|${data.pdtPrice}원|"></th>
+                    <th>
+                    <div class="product-price" th:text="|${data.pdtPrice}원|"></div>
+                    </th>
                     <td>1</td>
                     <td>-</td>
                     <td>[무료]</td>
-                    <th th:text="|${data.pdtPrice}원|"></th>
+                    <th >
+                    <div class="product-price" th:text="|${data.pdtPrice}원|"></div>
+                    </th>
                     </tr>
                     <tr>
                         <span class="left-line">
@@ -51,16 +56,15 @@
                         <td></td>
                         <td></td>
                         </span>
-                        <td class="right-line" colspan="8">상품구매금액<strong>74,000</strong>
-                        +배송비(무료)=합계:<strong>74,000원</strong></td>
+                        <td class="right-line" colspan="8">상품구매금액<strong th:text="|${data.pdtPrice}원|"></strong>
+                        +배송비(무료)=합계:<strong th:text="|${data.pdtPrice}원|"></strong></td>
                     </tr>
                 </tbody>
                     <tfoot class="tf-button">
                         <tr>
-                            <td>
-                                <td colspan="8">
+                            <td colspan="8">
                                 <span class="button">
-                                <button type="button">delete</button>
+                                  <button type="button">delete</button>
                                 </span>
                             </td>
                         </tr>
@@ -80,7 +84,7 @@
                     <tbody>
                         <tr>
                             <th><label for="customer">주문하시는 분</label></th>
-                            <td colspan="8"><input type="text" class="customer" name="customer" th:value="${user.name}" required></td>
+                            <td colspan="8"><input type="text" class="customer" name="customer" th:value="${user.name}"></td>
                         </tr>
                         <tr>
                             <th><label for="address">주소</label></th>
@@ -136,7 +140,7 @@
                                 </tr>
                                 <tr>
                                     <th><label for="customer">받으시는 분</label></th>
-                                    <td colspan="8"><input type="text" class="customer1" name="customer" required></td>
+                                    <td colspan="8"><input type="text" class="customer1" name="customer"></td>
                                 </tr>
                                 <tr>
                                     <th><label for="address">주소</label></th>
@@ -163,7 +167,7 @@
                                 <tr>
                                     <th><label for="delivery-msg">배송메세지</label></th>
                                     <td colspan="8">
-                                        <textarea name="message" id="message" required></textarea>
+                                        <textarea name="message" id="message"></textarea>
                                     </td>
                                 </tr>
                             </tbody>
@@ -186,9 +190,9 @@
                                         </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="price"><strong>74,000원</strong></td>
+                                                    <td class="price"><strong th:text="|${data.pdtPrice}원|"></strong></td>
                                                     <td class="price"><strong>0원</strong></td>
-                                                    <td class="price"><strong>74,000원</strong></td>
+                                                    <td class="price"><strong th:text="|${data.pdtPrice}원|"></strong></td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -208,7 +212,7 @@
                                     <tr>
                                         <td>적립금</td>
                                         <td>
-                                        <p><input type="text" id="mile" name="mile" required>원(총 사용가능 적립금 : 3000원)</p>
+                                        <p><input type="text" id="mile" name="mile">원(총 사용가능 적립금 : 3000원)</p>
                                             <li class="mile-info">- 적립금은 최소 1,000 이상일때 결제가 가능합니다.</li>
                                             <li class="mile-info">- 1회 구매시 적립금 최대 사용금액은 3,000원입니다.</li>
                                             <li class="mile-info">- 적립금으로만 결제할 경우, 결제금액이 0으로 보여지는 것은 정상이며 [결제하기] 버튼을 누르면 주문이 완료됩니다.</li>

@@ -71,7 +71,7 @@ class ImportApi {
 
     constructor () {
         this.#IMP = window.IMP;
-        this.#IMP.init("imp14519436");
+        this.#IMP.init("imp24504212");
         this.addPaymentEvent();
 
     }
@@ -84,9 +84,9 @@ class ImportApi {
     }
 
     requestPay(){
-        //const pdtName = document.querySelector(".product-name").textContent;
-        //const pdtPrice = document.querySelector(".product-price").textContent;
-        const name = document.querySelector("#customer").value;
+        const pdtName = document.querySelector(".product-name").textContent;
+        const pdtPrice = document.querySelector(".product-price").textContent;
+        const name = document.querySelector(".customer").value;
         const zoneCode = document.querySelector(".postcode").value;
         const addressAll = document.querySelector(".address").value;
         const addressDetail = document.querySelector(".detailAddress").value;
@@ -98,15 +98,15 @@ class ImportApi {
                 pg: "kakaopay",
                 pay_method: "card",
                 merchant_uid: "PRODUCT-" + new Date().getTime(),
-                //name: pdtName,
-                //amount: pdtPrice,
+                name: pdtName,
+                amount: pdtPrice,
                 buyer_name: name,
                 buyer_tel: phone,
                 buyer_addr: address,
                 buyer_postcode: zoneCode
             }, function (rsp) { // callback
                 if (rsp.success) {
-    
+                    
                 } else {
     
                 }
