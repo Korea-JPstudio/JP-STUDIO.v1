@@ -24,7 +24,7 @@
             </div>
             <div class="infoArea">
                 <div class="price">
-                    <form action="">
+                    <form action="/account/order" method="get">
                         <div class="pName" colspan="3"> </div>
                         <div class="line"></div>
                     <table class="detail-table">
@@ -35,13 +35,13 @@
                         <tr>
                             <th class="pdt-size">SIZE</th>
                             <td class="pdt-size" colspan="2">
-                                <select class="size-select" name="size">
+                                <select class="size-select" name="pdtDtlId">
                                     <option value="">[필수] 옵션을 선택해주세요.</option>
-                                    <option value="XL">XL</option>
-                                    <option value="L">L</option>
-                                    <option value="M">M</option>
-                                    <option value="S">S</option>
-                                    <option value="XS">XS</option>
+<!--                                    <option value="XL">XL</option>-->
+<!--                                    <option value="L">L</option>-->
+<!--                                    <option value="M">M</option>-->
+<!--                                    <option value="S">S</option>-->
+<!--                                    <option value="XS">XS</option>-->
                                 </select>
                             </td>
                         </tr>
@@ -118,7 +118,7 @@
                         </tfoot>
                     </table>
                     <div class="btn-group">
-                        <button class="btn-buy" type="button">BUY NOW</button>
+                        <button class="btn-buy" type="submit">BUY NOW</button>
                         <button class="btn-add-cart" type="button">ADD TO CART</button>
 
                         <!-- <img src="/static/images/buy-now.png" alt="구매 버튼"> -->

@@ -32,20 +32,17 @@
                     <td class="check"><input type="checkbox"></td>
                     <td class="img-box">
                         <a href="http://draw-fit.com/product/detail.html?product_no=1975&cate_no=49">
-                        <img src="	http://draw-fit.com/web/product/tiny/202209/822b6636ef6a7b3b8627cd1927efb2f1.jpg
-                        " alt></a>
+                        <img th:src="|/static/upload/product/${data.saveName}|"></a>
                     </td>
                     <td class="option-box">   
-                    <p class="name">
-                        <a href="http://draw-fit.com/product/corduroy-wes-shirt-navy/1975/category/49/" 
-                            class="product-name" th:value="${data.pdtName}"></a><p>
-                        <span class="option">[옵션:L]</span>
+                    <div th:text="${data.pdtName}"></div>
+                        <span class="option" th:text="|옵션: [ ${data.sizeName} ]|"></span>
                     </td>
-                    <th>74,000원</th>
+                    <th th:text="|${data.pdtPrice}원|"></th>
                     <td>1</td>
                     <td>-</td>
                     <td>[무료]</td>
-                    <th>74,000원</th>
+                    <th th:text="|${data.pdtPrice}원|"></th>
                     </tr>
                     <tr>
                         <span class="left-line">

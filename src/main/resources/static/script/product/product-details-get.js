@@ -76,7 +76,7 @@ class Option {
         pdtDtlSizeSelect.innerHTML = "";
         responseData.pdtSizes.forEach(value => {
             pdtDtlSizeSelect.innerHTML += `
-                <option value="${value.sizeId}">${value.sizeName}</option>
+                <option value="${value.pdtDtlId}">${value.sizeName}</option>
             `;
         })
 
