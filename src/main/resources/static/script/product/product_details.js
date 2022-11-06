@@ -15,8 +15,6 @@ totalPrice = totalPriceValue;
 let price = document.querySelector(".price-value").innerHTML;
 price = Number(price);
 
-
-
 const XL = document.querySelector(".XL")
 const L = document.querySelector(".L")
 const M = document.querySelector(".M")
@@ -58,22 +56,17 @@ size.onchange = () => {
 
 
 plus_btns[0].onclick = () => {
-    let sum = 0;
-    Number(sum);
-
     counts[0].value++;
-
-    sum = price * counts[0].value;
-
-    console.log(sum);
 
     pdtPrice[0].innerHTML = ``;
     pdtPrice[0].innerHTML += `
-        ₩${sum}
+        ₩${price * counts[0].value}
     `;
 
     totalPrice.innerHTML = ``;
-    totalPrice.innerHTML = `${sum}`;
+    totalPrice.innerHTML = `
+        ${price * counts[0].value}
+    `;
 }
 minus_btns[0].onclick = () => {
 
@@ -82,15 +75,15 @@ minus_btns[0].onclick = () => {
     }else{
         counts[0].value--;
     }
-    sum = price * counts[0].value;
 
     pdtPrice[0].innerHTML = ``;
     pdtPrice[0].innerHTML += `
-        ₩${sum}
+        ₩${price * counts[0].value}
     `;
 
-    
-    totalPrice.innerHTML = `${sum}`;
+    totalPrice.innerHTML = `
+        ${price * counts[0].value}
+    `;
 }
 
 plus_btns[1].onclick = () => {
@@ -157,63 +150,65 @@ minus_btns[3].onclick = () => {
 }
 
 
-for(let i = 0; i<pdtPrice.length; i++){
-    sum += Number(pdtPrice[i].innerHTML);
-}
+// for(let i = 0; i<pdtPrice.length; i++){
+//     sum += Number(pdtPrice[i].innerHTML);
+// }
 
-totalPrice.innerHTML = ``;
-totalPrice.innerHTML += `
-    ${sum}
-`;
-
-
-class ProductApi {
-    static #instance = null;
-    static getInstance() {
-        if(this.#instance == null) {
-            this.#instance = new ProductApi();
-        }
-        return this.#instance;
-    }
-
-    getProductData() {
-        let responseData = null;
-        const url = location.href;
-        const pdtId = url.substring(url.lastIndexOf("/") + 1);
-
-        $.ajax({
-            async: false,
-            type: "get",
-            url: "/api/product/" + pdtId,
-            dataType: "json",
-            success: response => {
-                responseData = response.data;
-            },
-            error: error => {
-                console.log(error);
-            }
-        });
-
-        return responseData;
-
-    }
-}
+// totalPrice.innerHTML = ``;
+// totalPrice.innerHTML += `
+//     ${sum}
+// `;
 
 
-class ProductDetail {
+// class ProductApi {
+//     static #instance = null;
+//     static getInstance() {
+//         if(this.#instance == null) {
+//             this.#instance = new ProductApi();
+//         }
+//         return this.#instance;
+//     }
 
-    constructor() {
-        const responseData = ProductApi.getInstance().getProductData();
-	    this.loadProductDetail(responseData);
-    }
+//     getProductData() {
+//         let responseData = null;
+//         const url = location.href;
+//         const pdtId = url.substring(url.lastIndexOf("/") + 1);
 
-    loadProductDetail(responseData) {
-        document.querySelector(".pName").textContent = responseData.pdtName;
-        document.querySelector(".price-value").textContent = "\\" + responseData.pdtPrice;
+//         $.ajax({
+//             async: false,
+//             type: "get",
+//             url: "/api/product/" + pdtId,
+//             dataType: "json",
+//             success: response => {
+//                 responseData = response.data;
+//             },
+//             error: error => {
+//                 console.log(error);
+//             }
+//         });
+
+//         return responseData;
+
+//     }
+// }
+
+
+// class ProductDetail {
+
+//     constructor() {
+//         const responseData = ProductApi.getInstance().getProductData();
+// 	    this.loadProductDetail(responseData);
+//     }
+
+//     loadProductDetail(responseData) {
+//         const pdtPrice = responseData.pdtPrice;
         
-    }
-}
+//         console.log(pdtPrice);
+        
+        
+//     }
+// }
 
-window.onload = () => {
-    new ProductDetail();
-}
+// window.onload = () => {
+//     new ProductDetail();
+// }
