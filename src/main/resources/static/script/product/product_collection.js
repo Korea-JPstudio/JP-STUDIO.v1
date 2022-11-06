@@ -118,10 +118,15 @@ class CollectionsService {
         }
         return this.#instatnce;
     }
+    pdtIdList = new Array();
 
     collectionsEntity = {
         page: 1,
         totalCount: 0
+    }
+
+    constructor() {
+        this.pdtIdList = new Array();
     }
 
     loadCollections() {
@@ -160,20 +165,17 @@ class CollectionsService {
         });
         this.addProductListEvent();
     }
-
-    addProductListEvent(){
+    addProductListEvent() {
         const collectionProducts = document.querySelectorAll(".collection-product");
-
-        collectionProducts.forEach((product, index) => {
-            product.onclick =() => {
-                location.href ="/product/" + this.pdtIdList[index];
-
-            }
-        })
-    }
+    
+        collectionProducts.forEach((product,index) => {
+          product.onclick = () => {
+            location.href = "/product/" + this.pdtIdList[index];
+          }
+        });
+      }
 }
 
 window.onload = () => {
     CollectionsService.getInstance().loadCollections();
-    CollectionsApi.getInstance().addPageButtonEvent();
 }
