@@ -106,37 +106,77 @@ class Option {
   }
 
   getProductPrice(responseData){
-      var arr = [];
+      const selectedSizes = new Array();
       const pdtDtlSizeSelect = document.querySelector(".size-select");
       const pdtSizeTable = document.querySelector(".selected-table");
       const pdtTableptb = document.querySelector(".pdt-tbody");
+      let i = 0;
       pdtDtlSizeSelect.onchange = () => {
-          const text = pdtDtlSizeSelect.options[pdtDtlSizeSelect.selectedIndex].text;
-          const values = pdtDtlSizeSelect.options[pdtDtlSizeSelect.selectedIndex].value;
-          if(!arr.includes(values)){
-              console.log(responseData);
-              pdtTableptb.innerHTML += `
-              <tr>
-                  <td>
-                      <p><span class="product-name">${responseData.pdtName}</span><br>- <span class="product-size">${text}</span></p>
-                  </td>
-                  <td>
-                      <input class="input1" type="text" size="1" value="1">
-                      <button type="button" class="plus">+</button>
-                      <button type="button" class="minus">-</button>   
-                  </td>
-              <td class="pdt-price-td">${responseData.pdtPrice}
-              </td>
-              </tr>
-              `;
-          }
-          arr.push(pdtDtlSizeSelect.options[pdtDtlSizeSelect.selectedIndex].value);
-          
-     
-      } 
-  }
+        console.log(responseData)
 
-}
+        
+
+        const sizeName = pdtDtlSizeSelect.options[pdtDtlSizeSelect.selectedIndex].text;
+        let emptyFlag = true;
+        for(let selectedSizeObj of selectedSizes) {
+          if(selectedSizeObj.sizeName == sizeName) {
+            emptyFlag = false;
+            break;
+          }
+        }
+
+        if(emptyFlag) {
+
+          const pdt = {
+            "pdtDtlid" : pdtDtlSizeSelect.value,
+            "sizeName" : sizeName,
+            "stockCnt" : 0,
+            "price" : responseData.pdtPrice
+          }
+
+          console.log(pdt)
+          selectedSizes.push(pdt);
+
+          pdtTableptb.innerHTML += `
+            <tr>
+                <td>
+                    <p><span class="product-name">${responseData.pdtName}</span><br>- <span class="product-size">${sizeName}</span></p>
+                </td>
+                <td>
+                    <input class="input1" type="text" size="1" value="1">
+                    <button type="button" class="plus">+</button>
+                    <button type="button" class="minus">-</button>   
+                </td>
+            <td class="pdt-price-td">${responseData.pdtPrice}
+            </td>
+            </tr>
+          `;
+          
+          const plusButtons = document.querySelectorAll(".plus");
+          plusButtons.forEach((button, index) => {
+            button.onclick = () => {
+              console.log(index)
+              console.log(selectedSizes[index])
+              selectedSizes[index].stockCnt += 1;
+              selectedSizes[index].price += selectedSizes[index].price;
+
+            }
+          })
+
+          const minusButtons = document.querySelectorAll(".minus");
+          minusButtons.forEach((button, index) => {
+            button.onclick = () => {
+              selectedSizes[index].stockCnt--;
+              selectedSizes[index].price -= selectedSizes[index].price;
+            }
+          })
+          
+
+        }
+
+      }  
+    } 
+  }
 
 window.onload = () => {
   new Option();
