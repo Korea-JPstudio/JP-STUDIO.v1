@@ -59,14 +59,23 @@ class Option {
     }
       loadProductImgs(responseData) {
         const productImages = document.querySelector(".image");
+        const productDtlImg = document.querySelector("#detail-img");
         productImages.innerHTML = ``;
   
-        responseData.pdtImgs.forEach(img => {
+        responseData.pdtImgs.forEach((img,index) => {
+          if(index == 0)
             productImages.innerHTML += `
                 <div class="image">
                     <img src="/static/upload/product/${img}">
                 </div>
             `;
+          if(index > 0){
+            productDtlImg.innerHTML += `
+                <div>
+                    <img src="/static/upload/product/${img}">
+                </div>
+            `;
+          }
         });
     }
 
