@@ -29,34 +29,9 @@ class CommonApi {
       });
       return responseData;
   }
-
-  // getProductSizeList(productId) {
-  //     let responseData = null;
-
-  //     $.ajax({
-  //         async: false,
-  //         type: "get",
-  //         url: "/api/admin/option/products/size/" + productId,
-  //         dataType: "json",
-  //         success: (response) => {
-  //             responseData = response.data;
-  //         },
-  //         error: (error) => {
-  //             console.log(error);
-  //         }
-  //     });
-  //     return responseData;
-  // }
 }
 
 class Option {
-  // static #instance = null;
-  // static getInstance() {
-  //     if(this.#instance == null) {
-  //         this.#instance = new Option();
-  //     }
-  //     return this.#instance;
-  // }
 
   constructor() {
       this.getProductPdtId();
@@ -65,8 +40,9 @@ class Option {
   getProductPdtId(){
       const responseData = CommonApi.getInstance().getProductMstList();
       this.setSizeSelectOptions(responseData);
-      this.setProductPdtName(responseData)
-      this.getProductPrice(responseData)
+      this.setProductPdtName(responseData);
+      this.getProductPrice(responseData);
+      this.loadProductImgs(responseData);
       console.log(responseData);
 
   }
@@ -79,20 +55,34 @@ class Option {
           pdtDtlSizeSelect.innerHTML += `
               <option value="${value.pdtDtlId}">${value.sizeName}</option>
           `;
-      })
+      });
+    }
+      loadProductImgs(responseData) {
+        const productImages = document.querySelector(".image");
+        productImages.innerHTML = ``;
+  
+        responseData.pdtImgs.forEach(img => {
+            productImages.innerHTML += `
+                <div class="image">
+                    <img src="/static/upload/product/${img}">
+                </div>
+            `;
+        });
+    }
 
-  }
 
   setProductPdtName(responseData) {
       const pdtDtlpdtName = document.querySelector(".pName");
       const pdtDtlPdtPrice = document.querySelector(".price-value");
       const tablePdtName = document.querySelectorAll(".product-name");
-      const pdtPriceNum = document.querySelectorAll(".sum");
+      const pdtDtlImg = document.querySelector(".image");
       const counts = document.querySelectorAll(".input1");
       const totalPrice = document.querySelector(".totalPrice");
       const plus_btns = document.querySelectorAll(".plus");
       const minus_btns = document.querySelectorAll(".minus");
 
+  
+      
       pdtDtlpdtName.innerHTML = "";
       pdtDtlpdtName.innerHTML += `
           ${responseData.pdtName}
@@ -104,7 +94,7 @@ class Option {
           ${responseData.pdtPrice}
       `;
 
-  } 
+  }
 
   getProductPrice(responseData){
       var arr = [];

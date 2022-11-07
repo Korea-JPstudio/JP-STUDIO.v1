@@ -47,6 +47,7 @@ public class ProductServiceImpl implements ProductService {
 
 
         List<Map<String, Object>> pdtSizes = new ArrayList<Map<String, Object>>();
+
         List<String> pdtImgs = new ArrayList<String>();
 
 
