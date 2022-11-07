@@ -42,7 +42,7 @@ class PageNumber {
 
     constructor(page, totalCount) {
         this.#page = page;
-        this.#maxPageNumber = totalCount % 16 == 0 ? Math.floor(totalCount / 9) : Math.floor(totalCount / 9) + 1;
+        this.#maxPageNumber = totalCount % 9 == 0 ? Math.floor(totalCount / 9) : Math.floor(totalCount / 9) + 1;
         this.#pageNumberList =  document.querySelector(".page-num");
         this.#pageNumberList.innerHTML = ``;
         this.loadPageNumbers();
@@ -133,9 +133,9 @@ class CollectionsService {
         const responseData = CollectionsApi.getInstance().getCollections(this.collectionsEntity.page);
         if(responseData.length > 0 ){
             this.collectionsEntity.totalCount = responseData[0].productTotalCount;
-
             new PageNumber(this.collectionsEntity.page, this.collectionsEntity.totalCount);
             this.getCollections(responseData);
+            console.log(this.pdtIdList);
         }else {
             alert("해당 카테고리에 등록된 상품 정보가 없습니다.");
             location.href = "/collections/all"
@@ -146,7 +146,7 @@ class CollectionsService {
     getCollections(responseData) {
         const collectionProducts = document.querySelector(".collection-products");
         collectionProducts.innerHTML = ``;
-
+        this.pdtIdList.length = 0;
         responseData.forEach(product => {
             this.pdtIdList.push(product.productId);
             collectionProducts.innerHTML += `
@@ -165,15 +165,17 @@ class CollectionsService {
         });
         this.addProductListEvent();
     }
+
     addProductListEvent() {
         const collectionProducts = document.querySelectorAll(".collection-product");
     
         collectionProducts.forEach((product,index) => {
-          product.onclick = () => {
+            product.onclick = () => {
             location.href = "/product/" + this.pdtIdList[index];
-          }
+            }
         });
       }
+
 }
 
 window.onload = () => {
