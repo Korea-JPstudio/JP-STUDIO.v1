@@ -19,7 +19,7 @@ import java.util.Map;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
-
+   
     @Override
     public List<CollectionListRespDto> getProductList(String category, int page) throws Exception {
         List<CollectionListRespDto> productList = new ArrayList<CollectionListRespDto>();
