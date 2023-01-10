@@ -87,7 +87,7 @@
 
     </select>
 
-    <insert id = "saveUser" parameterType="com.example.demo.domain.User">
+    <insert id = "saveUser" parameterType="com.example.demo.domain.User"> 
         insert into
             user_mst
         values(
